@@ -1,0 +1,22 @@
+button {
+    height: 50px;
+
+    outline: none;
+    border: none;
+    border-radius: 16px;
+
+    cursor: pointer;
+}
+
+/* Красная кнопка */
+button.red {
+    background-color: #972121;
+}
+
+/* Отключена */
+button:disabled {
+    cursor: not-allowed;
+    color: var(--text-dark);
+    background-color: #363636;
+    pointer-events: none;
+}

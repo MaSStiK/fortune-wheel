@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <article class="flex-col">
+        <header class="flex-col">
+            <h1>Заголовок</h1>
+            <h2>Подзаголовок</h2>
+        </header>
+
+        <section class="wheel flex-col">
+            <img src="./assets/triangle.png" alt="fortune-wheel-arrow" class="wheel__arrow">
+
+            <div class="wheel__container"></div>
+
+            <button class="wheel__button red" id="wheel-button">Крутить</button>
+        </section>
+
+        <section class="description flex-col">
+            <h1>Описание</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <h2>Доп описание</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        </section>
+    </article>
+
+    <div class="modal hidden">
+        <div class="modal__container flex-col">
+            <h2>Вы выиграли</h2>
+            <p id="modal-prize"></p>
+            <button class="modal__button red" id="modal-close">Закрыть</button>
+        </div>
+    </div>
+    
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/modal.js"></script>
+</body>
+</html>

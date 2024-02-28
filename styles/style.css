@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+@import "./main.css";
+@import "./text.css";
+@import "./button.css";
+@import "./wheel.css";
+@import "./modal.css";
+@import "./description.css";
+
+
+:root {
+    /* Основные цвета */
+    --bg-main: #1F1F1F;
+    --bg-secondary: #242328;
+    --bg-transparent: #15151586;
+
+    /* Бордеры */
+    --border-primary: #413F46;
+    --border-radius: 8px;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+
+    font-family: "Montserrat", sans-serif;
+    color: var(--text-white);
+    font-size: var(--p-size);
+    font-weight: 400;
+    word-break: break-word;
+
+    box-sizing: border-box;
+
+    list-style-type: none;
+    scroll-behavior: smooth;
+    color-scheme: dark;
+
+    transition: .2s all;
+}
+
+
+/* Scroll */
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Scroll track в цвет фона */
+*::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+/* Scroll полоска прокрутки */
+*::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #4b4b4b;
+}
