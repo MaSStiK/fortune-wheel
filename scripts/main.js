@@ -63,15 +63,10 @@ for (let reward of rewards) {
     `)
 }
 
-doWheelSpin = false // Крутится ли сейчас колесо
-sessionStorage.doWheelSpin = doWheelSpin
-
 // Вращение колеса
 function spinWheel() {
-    doWheelSpin = true
-    sessionStorage.doWheelSpin = true
+    sessionStorage.doWheelSpin = true // Устанавливаем что колесо вращается
     $(".wheel__container-tooltip").removeClass("show"); // Скрываем подсказку
-
 
     const reward = randomNumber(0, rewards.length - 1) // Выигранный подарок
     const randomRotation = randomNumber(2, 5) // Количество вращений
@@ -105,7 +100,7 @@ $(".wheel__container").mousemove((event) => {
     if (!device.desktop()) return
 
     const tooltip = $(event.target).attr("data-tooltip")
-    if (tooltip && !doWheelSpin) { // Если есть подсказка и колесо не крутится
+    if (tooltip && !sessionStorage.doWheelSpin) { // Если есть подсказка и колесо не крутится
         $(".wheel__container-tooltip p").text(tooltip)
         $(".wheel__container-tooltip").css({
             "left": `${event.pageX + 10}px`,
@@ -130,7 +125,7 @@ $(".wheel__container").on("click tap", (event) => {
     if (!device.mobile()) return
 
     const tooltip = $(event.target).attr("data-tooltip")
-    if (tooltip && !doWheelSpin) { // Если есть подсказка, ширина телефона и колесо не крутится
+    if (tooltip && !sessionStorage.doWheelSpin) { // Если есть подсказка, ширина телефона и колесо не крутится
         $(".modal__content").empty().append(`
             <p>${tooltip}</p>
         `)

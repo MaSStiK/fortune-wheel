@@ -4,7 +4,7 @@ $("#modal-close").on("click tap", (event) => {
 
     // Если модальное окно показано после вращения колеса
     if (sessionStorage.doWheelSpin) {
-        sessionStorage.doWheelSpin = false
+        delete sessionStorage.doWheelSpin
         // Возвращаем колесо в исходное положение
         $(".wheel__container").css({
             "transition": "0s",
