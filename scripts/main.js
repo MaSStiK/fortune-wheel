@@ -63,6 +63,8 @@ for (let reward of rewards) {
     `)
 }
 
+delete sessionStorage.doWheelSpin
+
 // Вращение колеса
 function spinWheel() {
     sessionStorage.doWheelSpin = true // Устанавливаем что колесо вращается
