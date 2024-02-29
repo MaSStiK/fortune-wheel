@@ -100,9 +100,10 @@ function spinWheel() {
 // Кнопка начинающая вращение
 $("#wheel-button").on("click tap", spinWheel)
 
-
-// Подсказка при наведении
+// Подсказка при наведении на пк
 $(".wheel__container").mousemove((event) => {
+    if (!device.desktop()) return
+
     const tooltip = $(event.target).attr("data-tooltip")
     if (tooltip && !doWheelSpin) { // Если есть подсказка и колесо не крутится
         $(".wheel__container-tooltip p").text(tooltip)
@@ -125,14 +126,14 @@ $(".wheel__container").mouseleave(() => {
 
 
 // Подсказка при клике на мобильном устройстве
-$(".wheel__container").on("tap", (event) => {
-    if (device.mobile()) {
-        const tooltip = $(event.target).attr("data-tooltip")
-        if (tooltip && !doWheelSpin) { // Если есть подсказка, ширина телефона и колесо не крутится
-            $(".modal__content").empty().append(`
-                <p>${tooltip}</p>
-            `)
-            $(".modal").addClass("show");
-        }
+$(".wheel__container").on("click tap", (event) => {
+    if (!device.mobile()) return
+
+    const tooltip = $(event.target).attr("data-tooltip")
+    if (tooltip && !doWheelSpin) { // Если есть подсказка, ширина телефона и колесо не крутится
+        $(".modal__content").empty().append(`
+            <p>${tooltip}</p>
+        `)
+        $(".modal").addClass("show");
     }
 })
