@@ -24,8 +24,11 @@
     --bg-transparent: #15151586;
 
     /* Бордеры */
-    --border-primary: #413F46;
+    --border-primary: #857c9e;
     --border-radius: 8px;
+
+    --z-above: 1;
+    --z-modal: 999;
 }
 
 
@@ -46,7 +49,7 @@
     color-scheme: dark;
 
     overflow-x: hidden;
-    transition: .2s all;
+    /* transition: .2s all; */
 }
 
 

@@ -2,6 +2,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-bottom: 12px;
 }
 
 
@@ -14,7 +15,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    z-index: 1;
+    z-index: var(--z-above);
 }
 
 
@@ -55,6 +56,20 @@
     margin-top: 20px;
 }
 
+.wheel__container::after {
+    content: "";
+    width: 70px;
+    height: 70px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+
+    background-color: #dde;
+    border-radius: 50%;
+} 
+
 .wheel__container div {
     width: 200px;
     height: 50%;
@@ -76,6 +91,9 @@
 .wheel__container div p {
     width: 150px;
     color: var(--text-black);
+    cursor: pointer;
+    pointer-events: none;
+    user-select: none;
 
     margin-top: 20px;
 }
@@ -93,7 +111,7 @@
 }
 
 .wheel__container div:nth-of-type(2) {
-    background-color: #4ce226;
+    background-color: #52af3b;
     transform: rotate(45deg);
 }
 
@@ -125,4 +143,25 @@
 .wheel__container div:nth-of-type(8) {
     background-color: #b31b1b;
     transform: rotate(315deg);
+}
+
+
+/* Подсказка при наведении */
+.wheel__container-tooltip {
+    width: 200px;
+    display: none;
+    padding: 12px;
+
+    position: fixed;
+    
+    border: 1px solid #b3c9ce;
+    border-radius: 4px;
+
+    color: var(--text-white);
+    background: var(--bg-main);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+.wheel__container-tooltip.show {
+    display: block;
 }

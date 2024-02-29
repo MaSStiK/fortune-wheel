@@ -15,6 +15,11 @@
         margin-top: 8px;
     }
 
+    .wheel__container::after {
+        width: 42px;
+        height: 42px;
+    } 
+
     .wheel__container div {
         width: 120px;
 

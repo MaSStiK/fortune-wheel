@@ -8,6 +8,7 @@ button {
     border-radius: 16px;
 
     cursor: pointer;
+    transition: .2s all;
 }
 
 /* Красная кнопка */
