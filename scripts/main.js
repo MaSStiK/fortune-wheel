@@ -4,34 +4,47 @@ function randomNumber(min, max) { // Случайное число
 
 const rewards = [
     {
-        name: "Промокод на 1 мини-курс ProductStar на выбор",
+        title: "Промокод на 1 мини-курс ProductStar на выбор",
+        titlePhone: "Промокод на 1 мини-курс",
     },
     {
-        name: "Промокод на 2 мини-курса ProductStar на выбор",
+        title: "Промокод на 2 мини-курса ProductStar на выбор",
+        titlePhone: "Промокод на 2 мини-курса",
     },
     {
-        name: "Гайд “Как не создать очередной бесполезный продукт” ",
+        title: "Гайд “Как не создать очередной бесполезный продукт” ",
+        titlePhone: "Гайд",
     },
     {
-        name: "Скидка на покупку любого курса - 65%",
+        title: "Скидка на покупку любого курса - 65%",
+        titlePhone: "Скидка 65%",
     },
     {
-        name: "Скидка на покупку любого курса - 70%",
+        title: "Скидка на покупку любого курса - 70%",
+        titlePhone: "Скидка 70%",
     },
     {
-        name: "Скидка на покупку любого курса - 75%",
+        title: "Скидка на покупку любого курса - 75%",
+        titlePhone: "Скидка 75%",
     },
     {
-        name: "Бесплатная консультация от Карьерного Центра ProductStar",
+        title: "Бесплатная консультация от Карьерного Центра ProductStar",
+        titlePhone: "Бесплатная консультация",
     },
     {
-        name: "«Подписка РБК Pro» на 1 месяц",
+        title: "«Подписка РБК Pro» на 1 месяц",
+        titlePhone: "«Подписка РБК Pro» на 1 месяц",
     },
 ]
 
 // Отображаем все награды
 for (let reward of rewards) {
-    $(".wheel__container").append(`<div><p>${reward.name}</p></div>`)
+    $(".wheel__container").append(`
+        <div>
+            <p>${reward.title}</p>
+            <p>${reward.titlePhone}</p>
+        </div>
+    `)
 }
 
 
@@ -51,7 +64,7 @@ function spinWheel() {
 
     // Через 6 секунд показываем модальное окно
     setTimeout(() => {
-        $("#modal-prize").text(rewards[reward].name);
+        $("#modal-prize").text(rewards[reward].title);
         $(".modal").removeClass("hidden");
     }, 6000)
 }

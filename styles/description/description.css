@@ -1,0 +1,11 @@
+.description {
+    padding: 40px;
+    gap: 12px;
+    background-color: rgb(66, 42, 42);
+
+    margin-top: 40px;
+}
+
+.description h2 {
+    margin-top: 12px;
+}

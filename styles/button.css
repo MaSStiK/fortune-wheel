@@ -1,6 +1,8 @@
 button {
     height: 50px;
 
+    font-size: var(--p);
+
     outline: none;
     border: none;
     border-radius: 16px;

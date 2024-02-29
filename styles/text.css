@@ -11,12 +11,13 @@
     --text-black: #000000;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 560px) {
     :root {
         --h1: 24px;
         --h2: 20px;
         --h3: 16px;
         --p: 14px;
+        --p-small: 12px;
     }
 }
 

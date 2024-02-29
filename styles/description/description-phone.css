@@ -1,0 +1,10 @@
+@media screen and (max-width: 560px) {
+    .description {
+        padding: 20px;
+        gap: 8px;
+    }
+    
+    .description h2 {
+        margin-top: 8px;
+    }
+}

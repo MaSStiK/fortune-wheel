@@ -3,9 +3,18 @@
 @import "./main.css";
 @import "./text.css";
 @import "./button.css";
-@import "./wheel.css";
-@import "./modal.css";
-@import "./description.css";
+
+@import "./header/header.css";
+@import "./header/header-phone.css";
+
+@import "./wheel/wheel.css";
+@import "./wheel/wheel-phone.css";
+
+@import "./description/description.css";
+@import "./description/description-phone.css";
+
+@import "./modal/modal.css";
+@import "./modal/modal-phone.css";
 
 
 :root {
@@ -36,6 +45,7 @@
     scroll-behavior: smooth;
     color-scheme: dark;
 
+    overflow-x: hidden;
     transition: .2s all;
 }
 
