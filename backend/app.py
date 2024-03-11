@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = 'product_star'
 
 db.init_app(app)
 
-# Создание таблицы
+# Создание БД
 with app.app_context():
     db.create_all()
 

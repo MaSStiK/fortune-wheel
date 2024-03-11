@@ -2,7 +2,7 @@ from datetime import datetime
 import random
 
 
-#### Функция вращения ####
+# Функция вращения
 def spin_wheel(user, sections):
     if user.section_id is not None:
         return None
@@ -30,8 +30,7 @@ def spin_wheel(user, sections):
     return selected_section
 
 
-
-### Функция обновления статистики ###
+# Функция обновления статистики
 def update_statistics(selected_section, user_email, user_phone):
     from app import app
     from models import PeopleStatistic, WheelSection, db
