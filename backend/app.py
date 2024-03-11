@@ -1,36 +1,19 @@
-from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, request, abort, url_for, redirect, render_template, session
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-import random
+from wheel_function import spin_wheel, update_statistics
+from models import WheelSection, PeopleStatistic, db
 import time
 
-
 app = Flask(__name__)
-
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///statistic.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'product_star'
 
+db.init_app(app)
 
-db = SQLAlchemy(app)
-
-
-### База данных - таблица ###
-class WheelSection(db.Model):
-    section_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
-    gift = db.Column(db.String(255))
-    probability = db.Column(db.Float)
-    max_drops = db.Column(db.Integer, nullable=True)
-    drops = db.Column(db.Integer, default=0)
-
-    def __repr__(self):
-        return f"WheelSection(section_id={self.section_id}, name={self.name}, gift={self.gift})"
-
-
-### Создание таблицы ###
+# Создание таблицы
 with app.app_context():
     db.create_all()
 
@@ -45,19 +28,17 @@ with app.app_context():
             {"section_id": 5, "name": "Скидка на покупку любого курса - 70%", "gift": "Промокод: PCAMP70", "probability": 0.2},
             {"section_id": 6, "name": "Скидка на покупку любого курса - 75%", "gift": "Промокод: PCAMP75", "probability": 0.01, "max_drops": 1},
             {"section_id": 7, "name": "Бесплатная карьерно-коучинговая консультация от Карьерного Центра ProductStar", "gift": "Консультация", "probability": 0.01, "max_drops": 1},
-            {"section_id": 8, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: ...", "probability": 0.1, "max_drops": 10}
-        ]
+            {"section_id": 8.1, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-lpa", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.2, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-rbj", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.3, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-apx", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.4, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-yjw", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.5, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-liz", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.6, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-cxk", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.7, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-mfk", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.8, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-cbi", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.9, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-kvd", "probability": 0.1, "max_drops": 1},
+            {"section_id": 8.10, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-ihv", "probability": 0.1, "max_drops": 1}
 
-        sections = [
-            WheelSection(
-                section_id=section["section_id"],
-                name=section["name"],
-                gift=section["gift"],
-                probability=section["probability"],
-                max_drops=section.get("max_drops"),
-                drops=0
-            )
-            for section in sections_data
         ]
 
         for section_data in sections_data:
@@ -69,64 +50,69 @@ with app.app_context():
         db.session.commit()
 
 
-#### Функция вращения ####
-def spin_wheel(sections):
-    available_sections = [section for section in sections if section.max_drops is None or (section.max_drops > 0)]
+# Роут для регистрации
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    with app.app_context():
+        if request.method == 'POST':
+            user_name = request.form.get('user_name')
+            user_email = request.form.get('email')
+            user_phone = request.form.get('phone')
 
-    if not available_sections:
-        available_sections = [section for section in sections if section.section_id in [3, 4, 5]]
+            if PeopleStatistic.query.filter_by(email=user_email).first() or PeopleStatistic.query.filter_by(phone=user_phone).first():
+                abort(400, "Пользователь с таким email или phone уже существует")
 
-    total_probability = sum(section.probability for section in available_sections)
-    random_number = random.uniform(0, total_probability)
+            new_user = PeopleStatistic(
+                user_name=user_name,
+                email=user_email,
+                phone=user_phone,
+                section_id=None,
+                spin_date=None
+            )
+            db.session.add(new_user)
+            db.session.commit()
 
-    cumulative_probability = 0
-    selected_section = None
+            session['user'] = {
+                'email': user_email,
+                'phone': user_phone
+            }
 
-    for section in available_sections:
-        cumulative_probability += section.probability
-        if random_number <= cumulative_probability:
-            selected_section = section
-            break
+            return redirect(url_for('spin', _external=True))
 
-    if selected_section.max_drops is not None:
-        selected_section.max_drops -= 1
-
-    return selected_section
+        return render_template('register.html')
 
 
-### Роут для вращения колеса ###
-@app.route('/spin', methods=['POST'])
+# Роут для вращения колеса
+@app.route('/spin', methods=['GET', 'POST'])
 def spin():
     with app.app_context():
-        sections = WheelSection.query.all()
-        selected_section = spin_wheel(sections)
-        update_statistics(selected_section)
+        if request.method == 'POST':
+            email = session['user']['email']
+            phone = session['user']['phone']
+    
+            print(f"User email: {email}, User phone: {phone}")
 
-        time.sleep(4)
+            user = PeopleStatistic.query.filter_by(email=email, phone=phone).first()
 
-    return jsonify({"result": f"Секция {selected_section.section_id}:{selected_section.name} - {selected_section.gift}"})
+            print(f"User: {user}")
+            if not user:
+                abort(400, "Пользователь не зарегистрирован")
+            if user.section_id is not None:
+                abort(400, "Пользователь уже прокручивал колесо")
 
+            sections = WheelSection.query.all()
+            
+            selected_section = spin_wheel(user, sections)
+            update_statistics(selected_section, email, phone)
 
-### Роут для получения статистики ###
-@app.route('/statistics', methods=['GET'])
-def get_statistics():
-    with app.app_context():
-        stats = WheelSection.query.all()
-        statistics = {f"Секция {stat.section_id}": stat.drops for stat in stats}
+            time.sleep(4)
 
-    return jsonify(statistics)
+            spin_result = f"Section {selected_section.section_id}: {selected_section.name} - {selected_section.gift}"
 
+            return render_template('spin.html', spin_result=spin_result, user=user)
 
-### Функция обновления статистики ###
-def update_statistics(selected_section):
-    with app.app_context():
-        stat_entry = WheelSection.query.filter_by(section_id=selected_section.section_id).first()
-
-        if stat_entry:
-            stat_entry.drops += 1
-
-        db.session.commit()
-
+        return render_template('spin.html')
+    
 
 admin = Admin(app, name='Fortune Wheel Admin', template_mode='bootstrap3')
 admin.add_view(ModelView(WheelSection, db.session))
