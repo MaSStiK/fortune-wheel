@@ -1,0 +1,22 @@
+button {
+    font-family: var(--font-Nexa-Bold);
+    font-size: var(--p);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.06em;
+    color: var(--text-white);
+
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+    transition: .2s all;
+}
+
+/* Отключена */
+button:disabled {
+    color: var(--text-dark);
+    background-color: #363636;
+    pointer-events: none;
+    cursor: not-allowed;
+}

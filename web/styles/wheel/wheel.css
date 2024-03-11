@@ -1,0 +1,167 @@
+.wheel {
+    width: min(1628px, 100%);
+    height: 100%;
+    align-items: center;
+    padding: 0 12px;
+    overflow: visible;
+
+    display: none;
+}
+
+.wheel h2 {
+    font-family: var(--font-Readex-Pro);
+    font-weight: 700;
+    font-size: 8vw;
+    
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--text-yellow);
+
+    margin-top: 44px;
+}
+
+
+/* Обвертка рулетки */
+.wheel-container__wrapper {
+    width: min(680px, 100%);
+
+    position: relative;
+    overflow: visible;
+
+    margin: 0 auto;
+}
+
+/* Подсветка */
+.wheel-container__wrapper-bg {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: var(--z-under);
+
+    border-radius: 50%;
+    background: linear-gradient(156deg, #ee9180 0%, #d350ec 0.01%, #ef947b 99.99%);
+    filter: blur(200px);
+}
+
+/* Указатель */
+.wheel-container__wrapper-pointer {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: var(--z-above);
+}
+
+
+/* Контейнер с рулеткой */
+.wheel-container {
+    width: min(680px, 100%);
+    padding-top: 100%;
+    position: relative;
+
+    background-color: transparent;
+    background-image: url("../../assets/wheel-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#wheel-canvas {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+
+    top: 0;
+    left: 0;
+}
+
+/* Текст который отображается в случае если канвас не работает */
+#wheel-canvas p {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 4vw;
+    color: var(--text-white);
+}
+
+
+/* Подсказка при наведении */
+.wheel-container__tooltip {
+    width: 200px;
+    display: none;
+    padding: 12px;
+
+    position: fixed;
+    
+    border: 1px solid #b3c9ce;
+    border-radius: 4px;
+
+    color: var(--text-white);
+    background: var(--bg-main);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+.wheel-container__tooltip p {
+    font-size: 16px;
+    
+}
+
+
+
+/* Кнопки */
+.wheel__buttons {
+    gap: 32px;
+    justify-content: center;
+    overflow: visible;
+
+    margin-top: 200px;
+    margin-bottom: 41px;
+}
+
+.wheel__buttons button {
+    width: 300px;
+    height: 67px;
+    border-radius: 30px;
+}
+
+/* Кнопка "Крутить" */
+.wheel__button_yellow {
+    color: var(--text-black);
+    background-color: var(--yellow);
+}
+
+/* Кнопка "Призы" */
+.wheel__button_tp {
+    background-color: transparent;
+    border: 1px solid var(--yellow);
+    border-radius: 30px;
+}
+
+/* Наведение на пк */
+@media (hover: hover) {
+    .wheel__button_yellow.alt:hover,
+    .wheel__button_tp.alt:hover {
+        scale: 1.05;
+    }
+}
+
+/* Клик на телефоне */
+@media (hover: none) {
+    .wheel__button_yellow.alt:active,
+    .wheel__button_tp.alt:active {
+        scale: 1.05;
+    }
+}

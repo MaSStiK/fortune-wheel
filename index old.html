@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./web/assets/favicon.ico" type="image/x-icon">
+    <title>Колесо фортуны</title>
+    <link rel="stylesheet" href="./web/styles/style.css">
+</head>
+<body>
+    <article class="flex-col">
+        <header class="flex-col">
+            <h1>Колесо фортуны</h1>
+            <h2>Испытай свою удачу</h2>
+        </header>
+
+        <section class="wheel flex-col">
+            <img src="./web/assets/triangle.png" alt="fortune-wheel-arrow" class="wheel__arrow">
+
+            <div class="wheel__container"></div>
+            <div class="wheel__container-tooltip">
+                <p></p>
+            </div>
+
+            <button class="wheel__button red" id="wheel-button">Испытай удачу</button>
+        </section>
+
+        <section class="description flex-col">
+            <h1>Описание</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <h2>Доп описание</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        </section>
+    </article>
+
+    <div class="modal">
+        <div class="modal__container">
+            <div class="modal__content flex-col"></div>
+            <button class="modal__button red" id="modal-close">Закрыть</button>
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- device.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/device.js/0.2.7/device.min.js"></script>
+    
+    <script src="./web/scripts/main.js"></script>
+    <script src="./web/scripts/modal.js"></script>
+</body>
+</html>

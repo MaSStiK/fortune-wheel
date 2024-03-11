@@ -3,40 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./web/assets/favicon.ico" type="image/x-icon">
     <title>Колесо фортуны</title>
-    <link rel="stylesheet" href="styles/style.css">
+
+    <link rel="stylesheet" href="./web/styles/style.css">
+    <link rel="stylesheet" href="./web/styles/main.css">
+    <link rel="stylesheet" href="./web/styles/text.css">
+    <link rel="stylesheet" href="./web/styles/buttons.css">
+
+    <link rel="stylesheet" href="./web/styles/background-images.css">
+
+    <link rel="stylesheet" href="./web/styles/header/header.css">
+    <link rel="stylesheet" href="./web/styles/header/header-phone.css">
+
+    <link rel="stylesheet" href="./web/styles/home/home.css">
+    <link rel="stylesheet" href="./web/styles/home/home-phone.css">
+
+    <link rel="stylesheet" href="./web/styles/wheel/wheel.css">
+    <link rel="stylesheet" href="./web/styles/wheel/wheel-phone.css">
+
+    <link rel="stylesheet" href="./web/styles/modal/modal.css">
+    <link rel="stylesheet" href="./web/styles/modal/modal-phone.css">
 </head>
 <body>
     <article class="flex-col">
-        <header class="flex-col">
-            <h1>Колесо фортуны</h1>
-            <h2>Испытай свою удачу</h2>
+        <header>
+            <div class="header-content flex-row"></div>
         </header>
 
-        <section class="wheel flex-col">
-            <img src="./assets/triangle.png" alt="fortune-wheel-arrow" class="wheel__arrow">
+        <div class="background-images">
+            <img src="./web/assets/home-page-bg.png" alt="background-image-blur">
+            <img src="./web/assets/home-page-bg.png" alt="background-image">
+        </div>
 
-            <div class="wheel__container"></div>
-            <div class="wheel__container-tooltip">
-                <p></p>
-            </div>
+        <section class="home">
+            <h1>Колесо</h1>
+            <h1>фортуны</h1>
 
-            <button class="wheel__button red" id="wheel-button">Крутить</button>
+            <p>Что такое колесо фортуны?<br>Это интерактивный способ получить крутые призы от ProductStar. Здесь нет проигравших — каждому достанется подарок!</p>
+            
+            <button class="home__button" id="go-to-wheel">Испытай удачу</button>
         </section>
 
-        <section class="description flex-col">
-            <h1>Описание</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-            <h2>Доп описание</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <section class="wheel">
+            <h2>Колесо фортуны</h2>
+
+            <div class="wheel-container__wrapper">
+                <div class="wheel-container__wrapper-bg"></div>
+                <img class="wheel-container__wrapper-pointer" src="./web/assets/wheel-pointer.png" alt="wheel-pointer">
+
+                <div class="wheel-container">
+                    <canvas id="wheel-canvas" width="680" height="680"
+                        data-responsiveMinWidth="180"
+                        data-responsiveScaleHeight="true">
+                        <p>Извините, Ваш браузер не поддерживается для отображения Колеса Фортуны. Попробуйте открыть страницу в другом браузере.</p>
+                    </canvas>
+                </div>
+
+                <div class="wheel-container__tooltip">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="wheel__buttons flex-row">
+                <button class="wheel__button_yellow alt" id="wheel-spin">Крутить</button>
+                <button class="wheel__button_tp alt" id="wheel-gifts">Призы</button>
+            </div>
         </section>
     </article>
 
     <div class="modal">
         <div class="modal__container">
-            <div class="modal__content flex-col"></div>
-            <button class="modal__button red" id="modal-close">Закрыть</button>
+            <div class="modal__content"></div>
+            <button id="modal-close">Закрыть</button>
         </div>
     </div>
 
@@ -46,8 +85,16 @@
 
     <!-- device.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/device.js/0.2.7/device.min.js"></script>
+
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+    <!-- Winwheel.js -->
+    <script src="./web/scripts/Winwheel.min.js"></script>
     
-    <script src="./scripts/main.js"></script>
-    <script src="./scripts/modal.js"></script>
+    <script src="./web/scripts/wheel.js"></script>
+    <script src="./web/scripts/wheel-buttons.js"></script>
+    <script src="./web/scripts/pages.js"></script>
+    <script src="./web/scripts/modal.js"></script>
 </body>
 </html>

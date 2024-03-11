@@ -1,0 +1,33 @@
+/* Сжатие контейнера с рулеткой */
+@media screen and (max-width: 704px) {
+    .wheel-container__wrapper-pointer {
+        width: 6.5vw;
+        height: 19.5vw;
+    }
+}
+
+@media screen and (max-width: 635px) {
+    /* .wheel {
+        padding: 0 12px;
+    } */
+
+    .wheel h2 {
+        display: none;
+    }
+
+    .wheel-container__wrapper {
+        margin-top: 187px;
+    }
+
+    .wheel__buttons {
+        gap: 16px;
+        flex-direction: column;
+    }
+
+    .wheel__buttons button {
+        width: 100%;
+        height: 46px;
+
+        font-size: 21px;
+    }
+}
