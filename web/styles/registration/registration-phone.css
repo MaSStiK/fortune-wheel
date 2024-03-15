@@ -17,15 +17,18 @@
         margin: 0 auto;
     }
 
+    /* Форма регистрации */
     .registration__form {
         margin: 0 auto;
     }
 
+    /* Заголовок "регистрация" */
     .registration__form-title {
         font-size: 25px;
         font-weight: 700;
     }
 
+    /* Инпуты в форме */
     .registration__form input[type=text] {
         padding: 14px 16px;
         font-size: 16px;
@@ -35,5 +38,35 @@
 
     .registration__form input[type=text]:first-of-type {
         margin-top: 25px;
+    }
+
+
+    /* Чекбокс в форме */
+    .registration__form-checkbox {
+        width: 150px; /* Ограничиваем ширину */
+        height: 19px;
+        padding-left: calc(19px + 12px); /* Отступ от чекбокса */
+
+        font-size: 16px;
+
+        margin-top: 20px;
+    }
+
+    /* Кастомный чекбокс */
+    .registration__form-checkbox span {
+        width: 19px;
+        height: 19px;
+    }
+
+    .registration__form-checkbox span svg {
+        width: 17px;
+        height: 15px;
+    }
+
+    /* Кнопка "Отправить" */
+    .registration__form .button-green {
+        height: 50px;
+
+        margin-top: 20px;
     }
 }

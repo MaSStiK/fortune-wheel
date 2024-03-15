@@ -52,6 +52,7 @@
 
     .home__container .button-green {
         width: min(470px, 100%);
+        height: 44px;
 
         margin: 111px auto 0 auto;
     }
