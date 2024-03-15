@@ -21,30 +21,3 @@ article {
 section {
     width: 100%;
 }
-
-
-
-/* Предзагрузка фонов на пк */
-@media screen and (min-width: 877px) {
-    /* Предзагрузка фонов */
-    body:after {
-        content:
-            url("../assets/home-bg.png")
-            url("../assets/registration-bg.png")
-        ;
-        display: none;
-    }
-}
-
-
-/* Предзагрузка фонов на телефоне */
-@media screen and (max-width: 876px) {
-    /* Предзагрузка фонов */
-    body:after {
-        content:
-            url("../assets/home-bg-phone.png")
-            url("../assets/registration-bg-phone.png")
-        ;
-        display: none;
-    }
-}
