@@ -1,0 +1,143 @@
+/* Страница регистрации */
+.registration {
+    display: none;
+    width: 100%;
+    padding: 40px;
+}
+
+/* Контейнер с блоком */
+.registration__container {
+    width: min(1240px, 100%);
+    height: 740px;
+    padding: 86px 0 0 98px;
+
+    border-radius: 30px;
+    background-color: var(--bg-gray);
+    background-image: url("../../assets/registration-bg.png");
+    background-repeat: no-repeat;
+    background-position: top right;
+
+    margin: 0 auto;
+}
+
+/* Форма регистрации */
+.registration__form {
+    width: min(622px, 100%);
+}
+
+/* Заголовок "регистрация" */
+.registration__form-title {
+    font-size: 54px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-transform: lowercase;
+}
+
+/* Инпуты в форме */
+.registration__form input[type=text] {
+    width: 100%;
+    padding: 28px 20px;
+
+    background-color: var(--bg-gray);
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+
+    font-weight: 400;
+    font-size: 18px;
+    color: #ffffff;
+
+    margin-top: 35px;
+}
+
+.registration__form input[type=text]:first-of-type {
+    margin-top: 66px;
+}
+
+/* Плейсхолдер */
+.registration__form input[type=text]::placeholder {
+    color: var(--text-gray);
+
+}
+
+/* Чекбокс в форме */
+.registration__form-checkbox {
+    width: 150px; /* Ограничиваем ширину */
+    height: 28px;
+    padding-left: calc(28px + 12px); /* Отступ от чекбокса */
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    font-size: 18px;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    margin-top: 39px;
+}
+
+/* Прячем стандартный чекбокс */
+.registration__form-checkbox input[type=checkbox] {
+    height: 0;
+    width: 0;
+    position: absolute;
+
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* Кастомный чекбокс */
+.registration__form-checkbox span {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border: 2px solid #ffffff;
+    transition: .2s all;
+}
+
+/* Наведение на пк */
+@media (hover: hover) {
+    .registration__form-checkbox:hover input ~ span {
+        background-color: #5e5e5e;
+    }
+}
+
+/* Клик на телефоне */
+@media (hover: none) {
+    .registration__form-checkbox:active input ~ span {
+        background-color: #5e5e5e;
+    }
+}
+
+/* Когда чекбокс не активирован нету галочки */
+.registration__form-checkbox span svg {
+    display: none;
+}
+
+/* Когда чекбокс активирован появляется галочка */
+.registration__form-checkbox input[type=checkbox]:checked ~ span svg {
+    display: block;
+}
+
+
+/* Кнопка "Отправить" */
+.registration__form .button-green {
+    width: 100%;
+
+    margin-top: 35px;
+}

@@ -1,7 +1,20 @@
 $("#go-to-wheel").on("click tap", () => {
-    $(".background-images").hide();
-    $(".home").hide();
-    $(".wheel").show();
+    $(".home").hide()
+    $(".wheel").show()
 })
 
-$("#go-to-wheel").click()
+$("#go-to-registration").on("click tap", () => {
+    $(".home").hide()
+    $(".registration").show()
+})
+
+$("#go-to-home").on("click tap", () => {
+    $(".registration").hide()
+    $(".home").show()
+})
+
+
+$("#wheel-gifts").on("click tap", () => {
+    $(".wheel").hide()
+    $(".home").show()
+})

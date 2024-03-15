@@ -1,148 +1,127 @@
-function randomNumber(min, max) { // Случайное число
-    return Math.round(Math.random() * (max - min)) + min;
-}
-
-const gifts = [
-    {   
-        fillStyle: "#E5FF00",
-        title: "Скидка на покупку любого курса - 75%",
-        data: "Скидка: DISCOUNT75\nДействие промокода до 30.04",
-        image: "./web/assets/gifts/Frame 1.png",
-    },
+let gifts = [
     {
-        fillStyle: "#A8D41D",
+        fillStyle: "#A2FF76",
         title: "Скидка на покупку любого курса - 65%",
         data: "Скидка: DISCOUNT65\nДействие промокода до 30.04",
-        image: "./web/assets/gifts/Frame 2.png",
+        imagePath: "./web/assets/gifts/1.png",
+    },
+    {   
+        fillStyle: "#BBFF75",
+        title: "Скидка на покупку любого курса - 75%",
+        data: "Скидка: DISCOUNT75\nДействие промокода до 30.04",
+        imagePath: "./web/assets/gifts/2.png",
     },
     {
-        fillStyle: "#59BF7D",
+        fillStyle: "#CFFF74",
         title: "Гайд “Как не создать очередной бесполезный продукт” ",
         data: "Ссылка: LINK",
-        image: "./web/assets/gifts/Frame 3.png",
+        imagePath: "./web/assets/gifts/3.png",
     },
     {
-        fillStyle: "#5EE1FE",
+        fillStyle: "#DDFF73",
         title: "Промокод на 2 мини-курса ProductStar на выбор",
         data: "Промокод: FREE2\nДействие промокода до 30.04",
-        image: "./web/assets/gifts/Frame 4.png",
+        imagePath: "./web/assets/gifts/4.png",
     },
     {
-        fillStyle: "#965CFF",
-        title: "Скидка на покупку любого курса - 70%",
-        data: "Скидка: DISCOUNT70\nДействие промокода до 30.04",
-        image: "./web/assets/gifts/Frame 5.png",
-    },
-    {
-        fillStyle: "#D7499A",
+        fillStyle: "#C2EEA3",
         title: "Бесплатная консультация от Карьерного Центра ProductStar",
         data: "Консультация\nДействие промокода до 30.04",
-        image: "./web/assets/gifts/Frame 6.png",
+        imagePath: "./web/assets/gifts/5.png",
     },
     {
-        fillStyle: "#FF99F5",
-        title: "«Подписка РБК Pro» на 1 месяц",
-        data: "Промокод: RBK_PRO1\nДействие промокода до 30.04",
-        image: "./web/assets/gifts/Frame 7.png",
-    },
-    {
-        fillStyle: "#FFE376",
+        fillStyle: "#B0E9B1",
         title: "Промокод на 1 мини-курс ProductStar на выбор",
         data: "Промокод: FREE1\nДействие промокода до 30.04",
-        image: "./web/assets/gifts/Frame 8.png",
-    }
+        imagePath: "./web/assets/gifts/6.png",
+    },
+    {
+        fillStyle: "#8ADFD2",
+        title: "«Подписка РБК Pro» на 1 месяц",
+        data: "Промокод: RBK_PRO1\nДействие промокода до 30.04",
+        imagePath: "./web/assets/gifts/7.png",
+    },
+    {
+        fillStyle: "#63D4F3",
+        title: "Скидка на покупку любого курса - 60%",
+        data: "Скидка: DISCOUNT60\nДействие промокода до 30.04",
+        imagePath: "./web/assets/gifts/8.png",
+    },
+
 ]
 
-delete sessionStorage.doWheelSpin
-
-let segments = []
-for (let gift of gifts) {
-    segments.push({
-        fillStyle: gift.fillStyle,
-        text: gift.title,
-        image: gift.image,
-    })
+// Загружаем картинки
+let loadImagesCount = 0 // Количество загруженных картинок
+for (let gift in gifts) { 
+    let image = new Image()
+    image.src = gifts[gift].imagePath
+    
+    gifts[gift].image = image // Сохраняем загруженную картинку
+    
+    loadImagesCount++
+    image.onload = () => loadImagesCount--
 }
 
-
-const startAngle = -5 // Поворот колеса перед вращением
-
-const Wheel = new Winwheel({
-    canvasId: "wheel-canvas", // canvas id
-    outerRadius: 275, // Диаметр колеса
-    numSegments: gifts.length, // Количество сегментов
-    centerX: 340, // Центр колеса по X
-    centerY: 344, // Центр колеса по Y
-    rotationAngle: startAngle, // Начальный угол вращения
-
-    responsive: true, // Сжатие колеса 
-
-    drawText: false, // Не отображаем текст, но он нужен для вывода подсказок
-    drawMode: "segmentImage", // Режим отображения картинок
-
-    segments: segments, // Элементы колеса
-
-    animation : {
-        type: "spinToStop",
-        duration: 10, // Длительность анимации
-        spins: 3, // Количество вращений
-        callbackFinished : wheelEnd, // Функция которая сработает после прокрутки колеса
+// Ждем пока все картинки загрузятся, после чего отрисовываем колесо
+const intervalId = setInterval(() => {  
+    if (loadImagesCount === 0) {
+        clearInterval(intervalId)
+        drawFortuneWheel()
     }
-})
+}, 10)
 
-// Функция которая сработает после прокрутки колеса
-function wheelEnd(indicatedSegment) {
-    console.log(indicatedSegment);
-    const gift = gifts.find((element) => element.title === indicatedSegment.text);
 
-    $(".modal__content").empty().append(`
-        <h2>Вы выиграли</h2>
-        <p>${gift.title}</p>
-        <p>${gift.data}</p>
-    `)
+// Функция отрисовки колеса
+function drawFortuneWheel(drawImages=false) {
+    const canvas = document.getElementById(drawImages ? "wheel-canvas-images" : "wheel-canvas")
+    
+    // Канвас большого размера что бы картинки не мылились
+    canvas.setAttribute("width", 1280)
+    canvas.setAttribute("height", 1280) 
 
-    $(".modal").show(0, () => $(".modal__container").show(500));
+    if (canvas.getContext) {
+        const arc = Math.PI / (gifts.length / 2)
+
+        const outsideRadius = canvas.width / 2 // Радиус окружности
+        const imageRadius = outsideRadius / 1.35 // Отдаленность картинок от центра окружности
+        const imageSize = gifts[0].image.naturalWidth // Размер картинки
+        // Размер картинки можно сделать меньше если они станут не влезать
+        // (все картинки должны быть одного размера)
+
+        let ctx = canvas.getContext("2d")
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+
+        for (let i in gifts) {
+            // Начальный поворот - минус 90 градусов и минус половина ширины 
+            const angle = (i * arc) - (90 * (Math.PI / 180)) - (arc / 2) 
+
+            ctx.beginPath()
+            ctx.arc(outsideRadius, outsideRadius, outsideRadius, angle, angle + arc, false)
+            ctx.arc(outsideRadius, outsideRadius, 0, angle + arc, angle, true)
+            ctx.fillStyle = gifts[i].fillStyle
+            ctx.fill()
+
+            ctx.beginPath()
+            ctx.moveTo(outsideRadius, outsideRadius)
+            ctx.arc(outsideRadius, outsideRadius, outsideRadius, angle, angle + arc)
+            ctx.lineTo(outsideRadius, outsideRadius)
+            ctx.fillStyle = gifts[i].fillStyle
+            ctx.fill()
+            // Отрисовываем двумя способами что бы избавится от линий между секциями
+            
+            // Если нужно отрисовать изображения
+            if (drawImages) {
+                ctx.save()
+                ctx.translate(
+                    outsideRadius + Math.cos(angle + arc / 2) * imageRadius, 
+                    outsideRadius + Math.sin(angle + arc / 2) * imageRadius
+                )
+                ctx.rotate(angle + arc / 2 + Math.PI / 2)
+
+                ctx.imageSmoothingEnabled = true
+                ctx.drawImage(gifts[i].image, -imageSize / 2, 0, imageSize, imageSize) // Отрисовываем изображение
+                ctx.restore()
+            }
+        } 
+    }
 }
-
-
-
-// Подсказка при наведении на пк
-$("#wheel-canvas").mousemove((event) => {
-    console.log(event);
-    if (!device.desktop()) return // Если не пк, то не отображаем подсказку
-
-    const segment = Wheel.getSegmentAt(event.clientX, event.clientY);
-
-    if (segment && !sessionStorage.doWheelSpin) { // Если колесо не вращается
-        $(".wheel-container__tooltip p").text(segment.text)
-        $(".wheel-container__tooltip").css({
-            "left": `${event.clientX + 10}px`,
-            "top": `${event.clientY + 10}px`
-        })
-
-        $(".wheel-container__tooltip").show()
-    } else {
-        $(".wheel-container__tooltip").hide()
-    }
-})
-
-// Если вышли за пределы колеса - скрываем
-$("#wheel-canvas").mouseleave(() => {
-    $(".wheel-container__tooltip").hide()
-})
-
-// Подсказка при клике на мобильном устройстве
-$("#wheel-canvas").on("click tap", (event) => {
-    // if (!device.mobile()) return // Если не телефон, то не отображаем подсказку
-    const segment = Wheel.getSegmentAt(event.clientX, event.clientY);
-
-    if (segment) {
-        const gift = gifts.find((element) => element.title === segment.text);
-
-        $(".modal__content").empty().append(`
-            <p>${gift.title}</p>
-        `)
-
-        $(".modal").show(0, () => $(".modal__container").show(500));
-    }
-})

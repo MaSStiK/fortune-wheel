@@ -11,73 +11,105 @@
     <link rel="stylesheet" href="./web/styles/text.css">
     <link rel="stylesheet" href="./web/styles/buttons.css">
 
-    <link rel="stylesheet" href="./web/styles/background-images.css">
-
-    <link rel="stylesheet" href="./web/styles/header/header.css">
-    <link rel="stylesheet" href="./web/styles/header/header-phone.css">
-
     <link rel="stylesheet" href="./web/styles/home/home.css">
     <link rel="stylesheet" href="./web/styles/home/home-phone.css">
 
     <link rel="stylesheet" href="./web/styles/wheel/wheel.css">
     <link rel="stylesheet" href="./web/styles/wheel/wheel-phone.css">
+    <link rel="stylesheet" href="./web/styles/wheel/wheel-modal.css">
+    <link rel="stylesheet" href="./web/styles/wheel/wheel-modal-phone.css">
 
-    <link rel="stylesheet" href="./web/styles/modal/modal.css">
-    <link rel="stylesheet" href="./web/styles/modal/modal-phone.css">
+    <link rel="stylesheet" href="./web/styles/registration/registration.css">
+    <link rel="stylesheet" href="./web/styles/registration/registration-phone.css">
 </head>
 <body>
-    <article class="flex-col">
-        <header>
-            <div class="header-content flex-row"></div>
-        </header>
-
-        <div class="background-images">
-            <img src="./web/assets/home-page-bg.png" alt="background-image-blur">
-            <img src="./web/assets/home-page-bg.png" alt="background-image">
-        </div>
-
+    <article>
         <section class="home">
-            <h1>Колесо</h1>
-            <h1>фортуны</h1>
+            <div class="home__container">
+                <!-- Заголовок на пк -->
+                <h1 class="home__title">Колесо</h1>
+                <h1 class="home__title">фортуны</h1>
 
-            <p>Что такое колесо фортуны?<br>Это интерактивный способ получить крутые призы от ProductStar. Здесь нет проигравших — каждому достанется подарок!</p>
-            
-            <button class="home__button" id="go-to-wheel">Испытай удачу</button>
+                <!-- Заголовок на телефоне -->
+                <h1 class="home__title-phone">Колесо фортуны </h1>
+
+                <p class="home__text">Что такое колесо фортуны?<br>Это интерактивный способ получить крутые призы от ProductStar. Здесь нет проигравших - каждому достанется подарок!</p>
+                
+                <button class="button-green" id="go-to-wheel">Испытай удачу</button>
+                <button class="button-green" id="go-to-registration">Регистрация</button>
+            </div>
         </section>
 
         <section class="wheel">
-            <h2>Колесо фортуны</h2>
+            <div class="wheel__container">
+                <canvas id="wheel-canvas" data-responsiveScaleHeight="true">
+                    <p>Извините, Ваш браузер не поддерживается для отображения Колеса Фортуны. Попробуйте открыть страницу в другом браузере.</p>
+                </canvas>
+                <canvas id="wheel-canvas-images" data-responsiveScaleHeight="true">
+                    <p>Извините, Ваш браузер не поддерживается для отображения Колеса Фортуны. Попробуйте открыть страницу в другом браузере.</p>
+                </canvas>
 
-            <div class="wheel-container__wrapper">
-                <div class="wheel-container__wrapper-bg"></div>
-                <img class="wheel-container__wrapper-pointer" src="./web/assets/wheel-pointer.png" alt="wheel-pointer">
+                <!-- Круг поверх канваса -->
+                <div class="wheel-canvas__border"></div>
 
-                <div class="wheel-container">
-                    <canvas id="wheel-canvas" width="680" height="680"
-                        data-responsiveMinWidth="180"
-                        data-responsiveScaleHeight="true">
-                        <p>Извините, Ваш браузер не поддерживается для отображения Колеса Фортуны. Попробуйте открыть страницу в другом браузере.</p>
-                    </canvas>
-                </div>
+                <!-- Круг в центре -->
+                <div class="wheel-canvas__center"></div>
 
-                <div class="wheel-container__tooltip">
-                    <p></p>
+                <!-- Указатель на приз -->
+                <svg class="wheel-canvas__pointer" width="75" height="106" viewBox="0 0 75 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_i_223_219)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M73.9941 37.6663C73.998 37.4447 74 37.2226 74 37C74 16.5655 57.4345 0 37 0C16.5655 0 0 16.5655 0 37C0 39.4527 0.238652 41.8497 0.694 44.1689V46.5589C0.694 46.8514 0.736771 47.1423 0.820953 47.4224L3.87124 57.5716C3.95661 57.8556 4.08362 58.1254 4.24814 58.3722L14 73L34.9817 104.249C36.1776 106.03 38.8023 106.017 39.98 104.224L59.5 74.5L70.2549 58.3676C70.4174 58.1238 70.5434 57.8576 70.6287 57.5774L74.1761 45.9272C74.2623 45.644 74.3062 45.3495 74.3062 45.0534V39C74.3062 38.5209 74.1938 38.068 73.9941 37.6663Z" fill="#808080" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_i_223_219" x="0" y="0" width="78.3062" height="115.576" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dx="4" dy="10" />
+                            <feGaussianBlur stdDeviation="10" />
+                            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
+                            <feBlend mode="normal" in2="shape" result="effect1_innerShadow_223_219" />
+                        </filter>
+                    </defs>
+                </svg>
+
+                <div class="wheel__modal">
+                    <h2 class="wheel__modal-title">Как использовать колесо?</h2>
+                    <p class="wheel__modal-text">Нажмите на кнопку «Крутить»,<br>и колесо начнет вращаться.<br>В результате вам выпадает один из восьми приятных призов</p>
+                    <button class="button-modal" id="wheel-modal-agree">Понятно!</button>
                 </div>
             </div>
 
-            <div class="wheel__buttons flex-row">
-                <button class="wheel__button_yellow alt" id="wheel-spin">Крутить</button>
-                <button class="wheel__button_tp alt" id="wheel-gifts">Призы</button>
+            <div class="wheel__buttons">
+                <button class="button-green" id="wheel-spin" disabled>Крутить</button>
+                <button class="button-green transparent" id="wheel-gifts">Призы</button>
+            </div>
+        </section>
+
+        <section class="registration">
+            <div class="registration__container">
+                <form class="registration__form">
+                    <h1 class="registration__form-title">Регистрация</h1>
+
+                    <input type="text" id="reg-form-name" placeholder="Имя">
+                    <input type="text" id="reg-form-phone" placeholder="Номер телефона">
+                    <input type="text" id="reg-form-email" placeholder="Email">
+
+                    <label class="registration__form-checkbox" for="reg-form-policy">Политика
+                        <input type="checkbox" id="reg-form-policy">
+                        <span>
+                            <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.7339 1.74664C23.0806 1.31673 23.0418 0.654879 22.6473 0.26836C22.2528 -0.118158 21.652 -0.0829802 21.3053 0.346932L7.92837 16.935L1.62214 9.98389C1.25106 9.57485 0.649404 9.57485 0.278316 9.98389C-0.0927719 10.3929 -0.0927719 11.0561 0.278316 11.4651L7.30155 19.2066C7.52067 19.4482 7.82019 19.5471 8.10516 19.5034C8.32279 19.4726 8.53098 19.359 8.68742 19.165L22.7339 1.74664Z" fill="white" />
+                              </svg>
+                        </span>
+                    </label>
+                
+                    <button class="button-green" type="submit" id="go-to-home">Отправить</button>
+                </form>
             </div>
         </section>
     </article>
-
-    <div class="modal">
-        <div class="modal__container">
-            <div class="modal__content"></div>
-            <button id="modal-close">Закрыть</button>
-        </div>
-    </div>
 
 
     <!-- jQuery -->
@@ -86,15 +118,8 @@
     <!-- device.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/device.js/0.2.7/device.min.js"></script>
 
-    <!-- gsap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-
-    <!-- Winwheel.js -->
-    <script src="./web/scripts/Winwheel.min.js"></script>
-    
+    <script src="./web/scripts/pages.js"></script>
     <script src="./web/scripts/wheel.js"></script>
     <script src="./web/scripts/wheel-buttons.js"></script>
-    <script src="./web/scripts/pages.js"></script>
-    <script src="./web/scripts/modal.js"></script>
 </body>
 </html>

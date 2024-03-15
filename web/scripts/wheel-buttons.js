@@ -1,25 +1,59 @@
+function randomNumber(min, max) { // Случайное число
+    return Math.round(Math.random() * (max - min)) + min
+}
+
+// Кнопка "Понятно!"
+$("#wheel-modal-agree").on("click tap", () => {
+    // Скрываем модальное окно и разблокируем кнопку
+    $(".wheel__modal").hide()
+    $("#wheel-spin").removeAttr("disabled");
+
+    // Отрисовываем канвас с картинками который плавно появляется
+    drawFortuneWheel(true)
+    $("#wheel-canvas-images").css({
+        "transition-duration": "1s",
+        "opacity": "1"
+    })
+})
+
 // Начать вращение
-$("#wheel-spin").on("click tap", () => {
+$(".wheel__buttons").on("click tap", "#wheel-spin", () => {
     const gift = randomNumber(0, gifts.length - 1) // Выигранный подарок
-    const giftDeg = 360 / gifts.length // Радиус одного подарка
-    const randomDeg = randomNumber(-giftDeg-2, giftDeg-2) // Отступ от краев сектора
+    const giftDeg = 360 / gifts.length // Размер одного подарка
+    const marginDeg = randomNumber(-((giftDeg - 2) / 2), ((giftDeg - 2) / 2)) // Отступ от краев сектора
+    const numberOfSpins =  1 // Количество вращений
+    const rotationDuration = 1 // Длительность вращения (в секундах)
 
-    $("#wheel-spin").attr("disabled", true); // Отключаем кнопку
-    sessionStorage.doWheelSpin = true
+    console.log(gift, gifts[gift]);
+    console.log("marginDeg", marginDeg);
+    console.log(-(giftDeg / 2), (giftDeg / 2));
 
-    $(".wheel__buttons").hide(500, () => $(".wheel__buttons").remove());
 
-    // Вращаем колесо (Градусы для поворота на награду + дополнительное вращение для неточного наведения)
-    Wheel.animation.stopAngle = (giftDeg * gift) + randomDeg;
-    Wheel.startAnimation();
+    // $(".wheel__buttons").hide(500, () => $(".wheel__buttons").remove())
+    $(".wheel__buttons").remove()
+
+    // Вращение колеса
+    // Несколько полных оборотов + градусы для поворота на награду + дополнительное вращение для неточного наведения
+    $("#wheel-canvas-images").css({
+        "transition": `${rotationDuration}s all cubic-bezier(0.1, 0, 0.25, 1)`,
+        "transform": `rotate(-${(numberOfSpins * 360) + (giftDeg * gift) + marginDeg}deg)`
+    })
+
+    // Через 1 секунду после остановки показываем модальное окно
+    setTimeout(() => {
+        $(".wheel__modal-title").text("Ваш приз")
+        $(".wheel__modal-text").text(`${gifts[gift].title}\n\n${gifts[gift].data}`)
+        $(".wheel__modal").show()
+    }, (rotationDuration + 1) * 1000)
+
 })
 
 // Список призов
-$("#wheel-gifts").on("click tap", () => {
-    $(".modal__content").empty().append(`
-        <h2>Все призы</h2>
-    `) 
+// $("#wheel-gifts").on("click tap", () => {
+//     $(".modal__content").empty().append(`
+//         <h2>Все призы</h2>
+//     `) 
 
-    // Показываем задний фон модального окна, а потом само окно
-    $(".modal").show(0, () => $(".modal__container").show(500));
-})
+//     // Показываем задний фон модального окна, а потом само окно
+//     $(".modal").show(0, () => $(".modal__container").show(500))
+// })

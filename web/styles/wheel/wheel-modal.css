@@ -1,0 +1,43 @@
+/* Модальное окно с информацией */
+.wheel__modal {
+    width: min(430px, 80%);
+    padding-top: 43px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    background: rgba(62, 62, 62, 0.2);
+}
+
+/* Заголовок модального окна */
+.wheel__modal-title {
+    padding: 0 15px;
+
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+/* Текст модального окна */
+.wheel__modal-text {
+    padding: 0 15px;
+
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    color: var(--text-white);
+    white-space: pre-wrap;
+
+    margin-top: 16px;
+}
+
+/* Кнопка закрытия окна */
+.wheel__modal .button-modal {
+    width: 100%;
+
+    margin-top: 40px;
+}

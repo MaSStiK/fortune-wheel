@@ -1,20 +1,58 @@
-@media screen and (max-width: 1065px) {
-    .home h1 {
-        font-size: 150px;
-        line-height: 200px;
+/* Заголовок на телефоне */
+.home__title-phone {
+    display: none;
+    width: min(470px, 100%);
 
+    font-weight: 600;
+    font-size: 31px;
+    letter-spacing: 0.01em;
+    background: linear-gradient(90deg, #fffd38 0%, #7ee9a9 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-        -webkit-text-stroke: 3px var(--text-yellow);
-        text-stroke: 3px var(--text-yellow);
-    }
+    margin: 0 auto;
 }
 
-@media screen and (max-width: 800px) {
-    .home h1 {
-        font-size: 100px;
-        line-height: 160px;
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    .home {
+        padding: 0;
+    }
 
-        -webkit-text-stroke: 2px var(--text-yellow);
-        text-stroke: 2px var(--text-yellow);
+    /* Контейнер во всю ширину страницы */
+    .home__container {
+        width: 100%;
+        height: auto;
+        padding: 483px 20px 30px 20px;
+    
+        border-radius: 0;
+        background-image: url("../../assets/home-bg-phone.png");
+        background-position: top;
+    
+        margin: 0 auto;
+    }
+
+    /* Прячем заголовок на пк */
+    .home__title {
+        display: none;
+    }
+
+    /* Показываем заголовок на телефоне */
+    .home__title-phone {
+        display: block;
+    }
+
+    .home__text {
+        width: min(470px, 100%);
+        font-size: 16px;
+
+        margin: 14px auto 0 auto;
+    }
+
+    .home__container .button-green {
+        width: min(470px, 100%);
+
+        margin: 111px auto 0 auto;
     }
 }

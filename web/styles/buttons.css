@@ -1,22 +1,123 @@
+:root {
+    /* Цвет кнопки */
+    --button-green: #7EE9A9;
+    --button-green-hover: transparent;
+
+    /* Цвет текста */
+    --button-text: #1d2136;
+    --button-text-hover: #ffffff;
+
+    /* Цвет отключенной кнопки */
+    --button-gray: #949494;
+}
+
+
 button {
     font-family: var(--font-Nexa-Bold);
-    font-size: var(--p);
-    font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 0.06em;
-    color: var(--text-white);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--button-text);
 
+    /* Отключаем базовые стили */
     outline: none;
-    border: none;
+    border: 1px solid transparent;
 
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     transition: .2s all;
 }
 
-/* Отключена */
+/* Отключенная кнопка */
 button:disabled {
-    color: var(--text-dark);
-    background-color: #363636;
-    pointer-events: none;
-    cursor: not-allowed;
+    color: var(--button-gray) !important;
+    border-color: var(--button-gray) !important;
+    background-color: transparent !important;
+
+    cursor: not-allowed !important;
+}
+
+
+/* Зеленая кнопка */
+.button-green {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    background-color: var(--button-green);
+    border-color: var(--button-green);
+}
+
+/* Прозрачная зеленая кнопка */
+.button-green.transparent {
+    color: var(--button-text-hover);
+    border-color: var(--button-green);
+    background-color: var(--button-green-hover);
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Текст становится жирнее */
+    .button-green {
+        font-weight: 700;
+    }
+}
+
+/* Наведение на пк */
+@media (hover: hover) {
+    .button-green:hover {
+        color: var(--button-text-hover);
+        background-color: var(--button-green-hover);
+    }
+
+    .button-green.transparent:hover {
+        color: var(--button-text);
+        background-color: var(--button-green);
+    }
+}
+
+/* Клик на телефоне */
+@media (hover: none) {
+    .button-green:active {
+        color: var(--button-text-hover);
+        background-color: var(--button-green-hover);
+    }
+
+    .button-green.transparent:active {
+        color: var(--button-text);
+        background-color: var(--button-green);
+    }
+}
+
+
+/* Кнопка в модальном окне */
+.button-modal {
+    height: 46px;
+
+    border-radius: 0 0 15px 15px;
+    border-top: 2px solid rgba(255, 255, 255, 0.6);
+    background-color: transparent;
+
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    color: var(--text-white);
+}
+
+/* Наведение на пк */
+@media (hover: hover) {
+    .button-modal:hover {
+        background-color: #ffffff33;
+    }
+}
+
+/* Клик на телефоне */
+@media (hover: none) {
+    .button-modal:active {
+        background-color: #ffffff33;
+    }
 }

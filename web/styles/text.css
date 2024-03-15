@@ -1,28 +1,18 @@
-/* Nexa Demo Bold */
-/* Nexa Demo Light */
-@import url("https://db.onlinewebfonts.com/c/3fe2115b5af4c997012cc8131973d9d1?family=Nexa+Demo+Bold");
-@import url("https://db.onlinewebfonts.com/c/1b35d95a201282c34fa09c1c3883865f?family=Nexa+Demo+Light");
+/* Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
-/* Readex Pro */
-@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap");
 
 :root {
-    --font-Nexa-Light: "Nexa Demo Light", sans-serif;
-    --font-Nexa-Bold: "Nexa Demo Bold", sans-serif;
-    --font-Readex-Pro: "Readex Pro", sans-serif;
-
     --text-white: #FFFFFF;
     --text-black: #000000;
-    --text-yellow: #CBFF00;
-
-    --p: 24px
+    --text-gray: #999999;
 }
 
 
 * {
-    font-family: var(--font-Nexa-Light);
+    font-family: "Montserrat", sans-serif;
     color: var(--text-white);
-    font-size: var(--p);
-    font-weight: 200;
+    font-size: 18px;
+    font-weight: 400;
     word-break: break-word;
 }

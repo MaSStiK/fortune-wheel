@@ -9,25 +9,15 @@ body {
 
 article {
     width: 100%;
-    align-items: center;
-    position: relative;
-    overflow-x: hidden;
 }
 
-@media screen and (max-width: 560px) {
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    body {
+        background-color: var(--bg-gray);
+    }
 }
 
 section {
     width: 100%;
-}
-
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-.flex-col {
-    display: flex;
-    flex-direction: column;
 }

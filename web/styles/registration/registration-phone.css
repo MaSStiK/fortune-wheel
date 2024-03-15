@@ -1,0 +1,39 @@
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    .registration {
+        padding: 0;
+    }
+
+    /* Контейнер во всю ширину страницы */
+    .registration__container {
+        width: 100%;
+        height: auto;
+        padding: 481px 20px 20px 20px;
+    
+        border-radius: 0;
+        background-image: url("../../assets/registration-bg-phone.png");
+        background-position: top;
+    
+        margin: 0 auto;
+    }
+
+    .registration__form {
+        margin: 0 auto;
+    }
+
+    .registration__form-title {
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .registration__form input[type=text] {
+        padding: 14px 16px;
+        font-size: 16px;
+
+        margin-top: 25px;
+    }
+
+    .registration__form input[type=text]:first-of-type {
+        margin-top: 25px;
+    }
+}

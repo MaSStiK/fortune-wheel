@@ -1,9 +1,7 @@
 :root {
     /* Основные цвета */
-    --bg-main: rgba(30, 30, 30);
-    --bg-header:  rgba(255, 255, 255, 0.2);
-
-    --yellow: rgb(203, 255, 0);
+    --bg-main: #2c2c2c;
+    --bg-gray: #1B1B1B;
 
     --z-under: -1;
     --z-above: 1;
@@ -27,14 +25,14 @@
     width: 4px;
 }
 
-/* Scroll track прозрачный */
+/* Scroll трек */
 *::-webkit-scrollbar-track {
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: transparent;
 }
 
-/* Scroll полоска прокрутки */
+/* Scroll полоса */
 *::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: var(--bg-header);
+    border-radius: 4px;
+    background-color: #7a7a7a;
 }

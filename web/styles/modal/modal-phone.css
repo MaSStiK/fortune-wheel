@@ -1,9 +1,0 @@
-@media screen and (max-width: 560px) {
-    .modal {
-        padding: 20px;
-    }
-    
-    .modal__container {
-        width: 100%;
-    }
-}
