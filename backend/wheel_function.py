@@ -1,7 +1,6 @@
 from datetime import datetime
 import random
 
-
 # Функция вращения
 def spin_wheel(user, sections):
     if user.section_id is not None:
@@ -42,10 +41,30 @@ def update_statistics(selected_section, user_email, user_phone):
         if stat_entry:
             stat_entry.drops += 1
 
+
         if user:
             if selected_section.max_drops is not None:
                 selected_section.max_drops -= 1
             user.section_id = selected_section.section_id
             user.spin_date = datetime.now()
+            user.promo_code = selected_section.promo_code
 
             db.session.commit()
+            
+            send_promo_code(user_email, selected_section.promo_code)
+
+
+# Функция отправки промокода на почту зарегистрированного пользователя
+def send_promo_code(recipient_email, promo_code):
+    from app import mail
+    from flask_mail import Message
+    msg = Message('Ваш промокод', recipients=[recipient_email])
+    msg.body = f'Ваш промокод: {promo_code}\n\n\
+    Активировать промокод можно по ссылке: https://pro.rbc.ru/activate_gift\n\
+    Промокодом можно воспользоваться до 31.05'
+    
+    try:
+        mail.send(msg)
+        print('Email sent successfully!')
+    except Exception as e:
+        print('Failed to send email:', str(e))
