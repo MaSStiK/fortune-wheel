@@ -1,20 +1,20 @@
 /* Переход на мобильную версию */
 @media screen and (max-width: 876px) {
-    .registration {
+    .registration-section {
         padding: 0;
     }
 
     /* Контейнер во всю ширину страницы */
-    .registration__container {
+    .registration {
         width: 100%;
         height: auto;
-        padding: 481px 20px 20px 20px;
+        padding: 422px 20px 20px 20px;
     
         border-radius: 0;
         background-image: url("../../assets/registration-bg-phone.png");
         background-position: top;
     
-        margin: 0 auto;
+        margin: 80px 0 0 0;
     }
 
     /* Форма регистрации */
@@ -26,30 +26,51 @@
     .registration__form-title {
         font-size: 25px;
         font-weight: 700;
+
+        margin-bottom: 30px;
+    }
+
+    /* Блок с инпутом */
+    .registration__form-input {
+        margin-top: 17px;
     }
 
     /* Инпуты в форме */
-    .registration__form input[type=text] {
-        padding: 14px 16px;
+    .registration__form-input input[type=text] {
+        padding: 15px 10px;
         font-size: 16px;
-
-        margin-top: 25px;
     }
 
-    .registration__form input[type=text]:first-of-type {
-        margin-top: 25px;
+    /* Замена плейсхолдера */
+    .registration__form-input label {
+        top: 15px;
+        left: 10px;
+
+        font-size: 16px;
+        transition: .1s all;
+
+        /* Отключаем взаимодействие с label */
+        pointer-events: none;
+    }
+
+    /* Перемещаем плейсхолдер выше если в инпуте есть значение или инпут активен */
+    .registration__form-input input:focus ~ label,
+    .registration__form-input input:valid ~ label {
+        transform: translateY(-24px);
+
+        font-size: 14px;
     }
 
 
     /* Чекбокс в форме */
     .registration__form-checkbox {
-        width: 150px; /* Ограничиваем ширину */
-        height: 19px;
+        width: 100%;
+        height: auto;
         padding-left: calc(19px + 12px); /* Отступ от чекбокса */
 
-        font-size: 16px;
+        font-size: 12px;
 
-        margin-top: 20px;
+        margin-top: 25px;
     }
 
     /* Кастомный чекбокс */
@@ -65,8 +86,8 @@
 
     /* Кнопка "Отправить" */
     .registration__form .button-green {
-        height: 50px;
+        width: 100%;
 
-        margin-top: 20px;
+        margin-top: 30px;
     }
 }

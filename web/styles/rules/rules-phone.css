@@ -1,0 +1,118 @@
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    .rules-section {
+        padding: 0;
+    }
+
+    /* Контейнер во всю ширину страницы */
+    .rules {
+        width: 100%;
+        height: auto;
+        padding: 34px 20px 80px 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        border-radius: 0;
+        background-image: none;
+    
+        margin-top: 40px;
+    }
+
+    /* Заголовок "Призы" */
+    .rules__title {
+        width: 90px;
+
+        font-weight: 700;
+        font-size: 25px;
+    }
+
+    /* Контейнер с подарками */
+    .rules__gifts-container {
+        width: min(345px, 100%);
+
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+
+        margin: 26px 0 0 0;
+    }
+
+    /* Блок с подарком */
+    .rules__gift {
+        width: 280px;
+        height: 130px;
+        padding: 30px;
+
+        margin-right: 50px;
+    }
+
+    /* Картинка подарка */
+    .rules__gift-image {
+        position: absolute;
+        top: 5px;
+        right: -50px;
+
+        transform: rotate(13deg);
+    }
+
+    /* Описание подарка */
+    .rules__gift-text {
+        width: 200px;
+
+        font-size: 16px;
+        line-height: 1.4;
+        letter-spacing: 0.01em;
+    }
+
+
+    /* Заголовок "Правила" */
+    .rules__title:nth-of-type(2) {
+        width: min(470px, 100%);
+        text-align: left;
+
+        margin: 120px 0 0 0;
+    }
+
+    /* Контейнер с правилами */
+    .rules__container {
+        width: min(470px, 100%);
+
+        margin: 13px 0 0 0;
+    }
+
+    .rules__container-subtitle {
+        font-size: 20px;
+    }
+
+    .rules__container-text {
+        font-size: 16px;
+        
+        margin-top: 16px;
+    }
+
+    .rules__container .button-green {
+        width: 100%;
+
+        margin-top: 36px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .rules__gift {
+        width: 200px;
+        padding: 12px;
+    }
+
+    .rules__gift-image {
+        width: 75px;
+        height: 75px;
+        top: 20px;
+        right: -35px;
+    }
+
+    .rules__gift-text {
+        width: 150px;
+    }
+}

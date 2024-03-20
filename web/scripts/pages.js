@@ -1,20 +1,23 @@
-$("#go-to-wheel").on("click tap", () => {
-    $(".home").hide()
-    $(".wheel").show()
-})
+// // Переход с главной страницы на колесо
+// $("#show-wheel").on("click tap", () => {
+//     $("section").hide()
+//     $(".wheel").show()
+// })
 
-$("#go-to-registration").on("click tap", () => {
-    $(".home").hide()
-    $(".registration").show()
-})
+// // Переход с главной страницы на регистрацию
+// $("#show-registration").on("click tap", () => {
+//     $("section").hide()
+//     $(".registration").show()
+// })
 
-$("#go-to-home").on("click tap", () => {
-    $(".registration").hide()
-    $(".home").show()
-})
+// // Переход с регистрации на главную страницу
+// $("#show-home").on("click tap", () => {
+//     $("section").hide()
+//     $(".home").show()
+// })
 
-
-$("#wheel-gifts").on("click tap", () => {
-    $(".wheel").hide()
-    $(".home").show()
-})
+// // Переход с колеса на подарки
+// $("#show-gifts").on("click tap", () => {
+//     $("section").hide()
+//     $(".gifts").show()
+// })

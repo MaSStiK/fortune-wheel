@@ -21,27 +21,71 @@
 
     <link rel="stylesheet" href="./web/styles/registration/registration.css">
     <link rel="stylesheet" href="./web/styles/registration/registration-phone.css">
+
+    <link rel="stylesheet" href="./web/styles/rules/rules.css">
+    <link rel="stylesheet" href="./web/styles/rules/rules-phone.css">
 </head>
 <body>
     <article>
-        <section class="home">
-            <div class="home__container">
-                <!-- Заголовок на пк -->
-                <h1 class="home__title">Колесо</h1>
-                <h1 class="home__title">фортуны</h1>
-
-                <!-- Заголовок на телефоне -->
-                <h1 class="home__title-phone">Колесо фортуны </h1>
-
+        <section class="home-section" id="home">
+            <div class="home">
+                <p class="home__logo">productstar</p>
+                <h1 class="home__title">Колесо фортуны </h1>
                 <p class="home__text">Что такое колесо фортуны?<br>Это интерактивный способ получить крутые призы от ProductStar. Здесь нет проигравших - каждому достанется подарок!</p>
-                
-                <button class="button-green" id="go-to-wheel">Испытай удачу</button>
-                <button class="button-green" id="go-to-registration">Регистрация</button>
+                <a class="button-green" href="#rules">Участвую</a>
             </div>
         </section>
 
-        <section class="wheel">
-            <div class="wheel__container">
+        <section class="rules-section" id="rules">
+            <div class="rules">
+                <h1 class="rules__title">Призы</h1>
+                <!-- В этот контейнер загружаются все призы -->
+                <div class="rules__gifts-container"></div>
+
+                <h1 class="rules__title">Правила</h1>
+                <div class="rules__container">
+                    <h2 class="rules__container-subtitle">Как использовать колесо?</h2>
+                    <p class="rules__container-text">Нажмите на кнопку «Крутить»,<br>и колесо начнет вращаться.<br>В результате вам выпадает один из восьми приятных призов</p>
+                    <a class="button-green" href="#registration">Зарегистрироваться</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="registration-section" id="registration">
+            <div class="registration">
+                <form class="registration__form">
+                    <h1 class="registration__form-title">Регистрация</h1>
+
+                    <div class="registration__form-input">
+                        <input type="text" id="reg-form-name" name="name" maxlength="100" required>
+                        <label for="reg-form-name">Имя</label>
+                    </div>
+                    <div class="registration__form-input">
+                        <input type="text" id="reg-form-phone" name="phone" maxlength="20" required>
+                        <label for="reg-form-phone">Номер телефона</label>
+                    </div>
+
+                    <div class="registration__form-input">
+                        <input type="text" id="reg-form-email" name="email" maxlength="100" required>
+                        <label for="reg-form-email">Email</label>
+                    </div>
+
+                    <label class="registration__form-checkbox" for="reg-form-policy">Нажимая на кнопку «Отправить», я соглашаюсь с <a href="https://productstar.ru/confpolitics?utm_source=admitad&utm_medium=cpa&utm_campaign=58&admitad_uid=4d52e016740a9f112838924a8ababc4a" target="_blank">политикой конфиденциальности</a>
+                        <input type="checkbox" id="reg-form-policy">
+                        <span>
+                            <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.7339 1.74664C23.0806 1.31673 23.0418 0.654879 22.6473 0.26836C22.2528 -0.118158 21.652 -0.0829802 21.3053 0.346932L7.92837 16.935L1.62214 9.98389C1.25106 9.57485 0.649404 9.57485 0.278316 9.98389C-0.0927719 10.3929 -0.0927719 11.0561 0.278316 11.4651L7.30155 19.2066C7.52067 19.4482 7.82019 19.5471 8.10516 19.5034C8.32279 19.4726 8.53098 19.359 8.68742 19.165L22.7339 1.74664Z" fill="white" />
+                              </svg>
+                        </span>
+                    </label>
+                
+                    <button class="button-green" id="registration-submit" type="submit">Отправить</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="wheel-section">
+            <div class="wheel" id="wheel">
                 <canvas id="wheel-canvas" data-responsiveScaleHeight="true">
                     <p>Извините, Ваш браузер не поддерживается для отображения Колеса Фортуны. Попробуйте открыть страницу в другом браузере.</p>
                 </canvas>
@@ -50,13 +94,13 @@
                 </canvas>
 
                 <!-- Круг поверх канваса -->
-                <div class="wheel-canvas__border"></div>
+                <div class="wheel__canvas-border"></div>
 
                 <!-- Круг в центре -->
-                <div class="wheel-canvas__center"></div>
+                <div class="wheel__canvas-center"></div>
 
                 <!-- Указатель на приз -->
-                <svg class="wheel-canvas__pointer" width="75" height="106" viewBox="0 0 75 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="wheel__canvas-pointer" width="75" height="106" viewBox="0 0 75 106" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_i_223_219)">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M73.9941 37.6663C73.998 37.4447 74 37.2226 74 37C74 16.5655 57.4345 0 37 0C16.5655 0 0 16.5655 0 37C0 39.4527 0.238652 41.8497 0.694 44.1689V46.5589C0.694 46.8514 0.736771 47.1423 0.820953 47.4224L3.87124 57.5716C3.95661 57.8556 4.08362 58.1254 4.24814 58.3722L14 73L34.9817 104.249C36.1776 106.03 38.8023 106.017 39.98 104.224L59.5 74.5L70.2549 58.3676C70.4174 58.1238 70.5434 57.8576 70.6287 57.5774L74.1761 45.9272C74.2623 45.644 74.3062 45.3495 74.3062 45.0534V39C74.3062 38.5209 74.1938 38.068 73.9941 37.6663Z" fill="#808080" />
                     </g>
@@ -74,40 +118,19 @@
                     </defs>
                 </svg>
 
-                <div class="wheel__modal">
+                <!-- <div class="wheel__modal">
                     <h2 class="wheel__modal-title">Как использовать колесо?</h2>
                     <p class="wheel__modal-text">Нажмите на кнопку «Крутить»,<br>и колесо начнет вращаться.<br>В результате вам выпадает один из восьми приятных призов</p>
                     <button class="button-modal" id="wheel-modal-agree">Понятно!</button>
-                </div>
+                </div> -->
             </div>
 
             <div class="wheel__buttons">
                 <button class="button-green" id="wheel-spin" disabled>Крутить</button>
-                <button class="button-green transparent" id="wheel-gifts">Призы</button>
+                <a class="button-green transparent" href="#rules">Призы</a>
             </div>
-        </section>
 
-        <section class="registration">
-            <div class="registration__container">
-                <form class="registration__form">
-                    <h1 class="registration__form-title">Регистрация</h1>
-
-                    <input type="text" id="reg-form-name" placeholder="Имя">
-                    <input type="text" id="reg-form-phone" placeholder="Номер телефона">
-                    <input type="text" id="reg-form-email" placeholder="Email">
-
-                    <label class="registration__form-checkbox" for="reg-form-policy">Политика
-                        <input type="checkbox" id="reg-form-policy">
-                        <span>
-                            <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.7339 1.74664C23.0806 1.31673 23.0418 0.654879 22.6473 0.26836C22.2528 -0.118158 21.652 -0.0829802 21.3053 0.346932L7.92837 16.935L1.62214 9.98389C1.25106 9.57485 0.649404 9.57485 0.278316 9.98389C-0.0927719 10.3929 -0.0927719 11.0561 0.278316 11.4651L7.30155 19.2066C7.52067 19.4482 7.82019 19.5471 8.10516 19.5034C8.32279 19.4726 8.53098 19.359 8.68742 19.165L22.7339 1.74664Z" fill="white" />
-                              </svg>
-                        </span>
-                    </label>
-                
-                    <button class="button-green" type="submit" id="go-to-home">Отправить</button>
-                </form>
-            </div>
+            <p class="wheel-win">вы выйграли</p>
         </section>
     </article>
 
@@ -122,5 +145,7 @@
     <script src="./web/scripts/pages.js"></script>
     <script src="./web/scripts/wheel.js"></script>
     <script src="./web/scripts/wheel-buttons.js"></script>
+    <script src="./web/scripts/gifts.js"></script>
+    <script src="./web/scripts/registration.js"></script>
 </body>
 </html>

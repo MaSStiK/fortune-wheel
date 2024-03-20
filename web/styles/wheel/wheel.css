@@ -1,12 +1,11 @@
 /* Страница с колесом */
-.wheel {
-    display: none;
+.wheel-section {
     width: 100%;
-    padding: 40px 20px;
+    padding: 110px 20px;
 }
 
 /* Контейнер с колесом */
-.wheel__container {
+.wheel {
     width: min(720px, 100%);
     aspect-ratio : 1 / 1;
     position: relative;
@@ -31,7 +30,7 @@
 }
 
 /* Круг поверх канваса */
-.wheel-canvas__border {
+.wheel__canvas-border {
     width: 100%;
     height: 100%;
 
@@ -45,7 +44,7 @@
 }
 
 /* Круг в центре */
-.wheel-canvas__center {
+.wheel__canvas-center {
     width: clamp(37px, 9vw, 72px);
     height: clamp(37px, 9vw, 72px);
     
@@ -60,7 +59,7 @@
 }
 
 /* Указатель на приз */
-.wheel-canvas__pointer {
+.wheel__canvas-pointer {
     width: clamp(39px, 9vw, 74px);
     height: clamp(54px, 13vw, 105px);
 
@@ -73,15 +72,25 @@
 
 /* Кнопки */
 .wheel__buttons {
-    width: min(598px, 100%);
+    width: min(260px, 100%);
     display: flex;
-    justify-content: center;
-    gap: 25px 78px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 16px;
 
-    margin: 140px auto 0 auto;
+    margin: 64px auto 0 auto;
 }
 
 .wheel__buttons .button-green {
     width: 260px;
+}
+
+
+
+/* Текст выигрыша */
+.wheel-win {
+    display: none;
+
+    white-space: pre-wrap;
+    text-align: center;
+    margin-top: 12px;
 }

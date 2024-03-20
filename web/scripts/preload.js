@@ -1,15 +1,25 @@
-// Предзагрузка изображений
-const preloadImage = (src) => (new Image().src = src)
-if (window.screen.width > 876) {
-    [
-        "./web/assets/home-bg.png",
-        "./web/assets/registration-bg.png"
-    ].forEach(preloadImage)
-}
+// // Предзагрузка изображений
+// function preloadImage(sources) {
+//     sources.forEach(src => new Image().src = src)
+// } 
 
-if (window.screen.width <= 876) {
-    [
-        "./web/assets/home-bg-phone.png",
-        "./web/assets/registration-bg-phone.png"
-    ].forEach(preloadImage)
-}
+// // На пк
+// if (window.screen.width > 876) {
+//     preloadImage(
+//         [
+//             "./web/assets/home-bg.png",
+//             "./web/assets/registration-bg.png"
+//         ]
+//     )
+    
+// }
+
+// // На телефоне
+// if (window.screen.width <= 876) {
+//     preloadImage(
+//         [
+//             "./web/assets/home-bg-phone.png",
+//             "./web/assets/registration-bg-phone.png"
+//         ]
+//     )
+// }

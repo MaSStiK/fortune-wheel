@@ -1,6 +1,6 @@
 /* Переход на мобильную версию */
 @media screen and (max-width: 876px) {
-    .wheel {
+    .wheel-section {
         padding: 114px 10px 34px 10px;
     }
 

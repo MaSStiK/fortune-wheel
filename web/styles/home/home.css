@@ -1,14 +1,15 @@
 /* Главная страница */
-.home {
+.home-section {
     width: 100%;
     padding: 40px;
 }
 
 /* Контейнер с блоком */
-.home__container {
+.home {
     width: min(1240px, 100%);
     height: 740px;
-    padding: 223px 0 0 53px;
+    padding: 242px 0 0 40px;
+    position: relative;
 
     border-radius: 30px;
     background-color: var(--bg-gray);
@@ -19,29 +20,31 @@
     margin: 0 auto;
 }
 
-/* Заголовок "Колесо" */
-.home__title {
-    width: 307px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Логотип блока */
+.home__logo {
+    position: absolute;
+    top: 24px;
+    left: 63px;
 
-    border-radius: 30px;
-    background: linear-gradient(90deg, #a2ff77 0%, #a4f9d5 100%);
-
-    font-size: 54px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    color: var(--text-black);
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--text-lightGray);
 }
 
-/* Заголовок "Фортуны" */
-.home__title:nth-of-type(2) {
-    width: 360px;
+/* Заголовок "Колесо фортуны" */
+.home__title {
+    width: 355px;
 
-    margin-left: 121px;
-    margin-top: 20px;
+    font-weight: 600;
+    font-size: 62px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
@@ -54,18 +57,12 @@
     letter-spacing: 0.01em;
     color: #fff;
 
-    margin-left: 25px;
-    margin-top: 65px;
+    margin-top: 28px;
 }
 
 /* Кнопка "Испытать удачу" */
-.home__container .button-green {
+.home .button-green {
     width: 260px;
 
-    margin-left: 25px;
-    margin-top: 50px;
-}
-
-#go-to-registration {
-    margin-top: 12px;
+    margin-top: 60px;
 }

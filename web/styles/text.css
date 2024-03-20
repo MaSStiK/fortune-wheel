@@ -1,10 +1,11 @@
 /* Montserrat */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap");
 
 
 :root {
     --text-white: #FFFFFF;
     --text-black: #000000;
+    --text-lightGray: #bebebe;
     --text-gray: #999999;
 }
 

@@ -41,15 +41,18 @@ $(".wheel__buttons").on("click tap", "#wheel-spin", () => {
 
     // Через 1 секунду после остановки показываем модальное окно
     setTimeout(() => {
-        $(".wheel__modal-title").text("Ваш приз")
-        $(".wheel__modal-text").text(`${gifts[gift].title}\n\n${gifts[gift].data}`)
-        $(".wheel__modal").show()
+        // $(".wheel__modal-title").text("Ваш приз")
+        // $(".wheel__modal-text").text(`${gifts[gift].title}\n\n${gifts[gift].data}`)
+        // $(".wheel__modal").show()
+
+        $(".wheel-win").text(`Ваш приз: ${gifts[gift].title}\n\n${gifts[gift].data}`).show()
+
     }, (rotationDuration + 1) * 1000)
 
 })
 
 // Список призов
-// $("#wheel-gifts").on("click tap", () => {
+// $("#show-gifts").on("click tap", () => {
 //     $(".modal__content").empty().append(`
 //         <h2>Все призы</h2>
 //     `) 

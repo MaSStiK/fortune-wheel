@@ -12,23 +12,20 @@
 }
 
 
-button {
-    font-family: var(--font-Nexa-Bold);
+button, a {
     font-weight: 600;
     font-size: 16px;
     color: var(--button-text);
+    text-decoration: none;
 
     /* Отключаем базовые стили */
     outline: none;
     border: 1px solid transparent;
 
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     transition: .2s all;
 }
+
 
 /* Отключенная кнопка */
 button:disabled {
