@@ -161,7 +161,7 @@ def export_data_csv():
     return response
 
 
-
+# Возвращает массив с информацией о всех секций, а именно name, color и image_url
 @app.route('/wheel_data', methods=['GET'])
 def get_wheel_data():
     with app.app_context():
