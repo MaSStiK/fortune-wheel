@@ -68,6 +68,7 @@ with app.app_context():
 def index():
     return render_template('fortune_wheel.html', register=True, spin=False) 
 
+
 # Роут для регистрации
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -100,7 +101,6 @@ def register():
         return render_template('fortune_wheel.html', register=True, spin=False)
 
 
-
 # Роут для вращения колеса
 @app.route('/spin', methods=['GET', 'POST'])
 def spin():
@@ -126,7 +126,7 @@ def spin():
 
             time.sleep(4)
 
-            spin_result = f"Section {selected_section.section_id}: {selected_section.name} - {selected_section.gift}"
+            spin_result = f"{selected_section.name}: {selected_section.gift}"
 
             return render_template('fortune_wheel.html', spin_result=spin_result, register=False, spin=True, user=user) # Изменили здесь
 
@@ -162,7 +162,7 @@ def export_data_csv():
 
 
 # Возвращает массив с информацией о всех секций, а именно name, color и image_url
-@app.route('/wheel_data', methods=['GET'])
+@app.route('/wheel_data')
 def get_wheel_data():
     with app.app_context():
         sections_data = WheelSection.query.all()
@@ -175,7 +175,6 @@ def get_wheel_data():
             }
             wheel_data.append(section_info)
         return jsonify(wheel_data)
-
 
 
 admin = Admin(app, name='Fortune Wheel Admin', template_mode='bootstrap3')
