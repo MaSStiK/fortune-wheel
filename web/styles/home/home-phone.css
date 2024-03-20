@@ -21,15 +21,15 @@
 
     /* Скрываем логотип productstar */
     .home__logo {
-        display: none;
+        top: 22px;
+        left: 10px;
     }
 
-    .home__title {
+    /* Заголовок "Колесо фортуны" */
+    .home .section-title {
         width: min(470px, 100%);
 
-        font-weight: 600;
         font-size: 31px;
-        line-height: 1.1;
         text-transform: none;
     }
 
@@ -42,7 +42,6 @@
 
     .home .button-green {
         width: min(470px, 100%);
-        height: 44px;
 
         margin-top: 80px;
     }

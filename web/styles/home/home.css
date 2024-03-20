@@ -1,7 +1,7 @@
 /* Главная страница */
 .home-section {
     width: 100%;
-    padding: 40px;
+    padding: 35px;
 }
 
 /* Контейнер с блоком */
@@ -31,9 +31,18 @@
     text-transform: uppercase;
     text-align: center;
     color: var(--text-lightGray);
+
+    user-select: none;
 }
 
 /* Заголовок "Колесо фортуны" */
+.home .section-title {
+    width: 355px;
+
+    font-size: 62px;
+    text-transform: uppercase;
+}
+
 .home__title {
     width: 355px;
 

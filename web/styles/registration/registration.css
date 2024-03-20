@@ -1,14 +1,13 @@
 /* Страница регистрации */
 .registration-section {
     width: 100%;
-    padding: 60px 40px 40px 40px;
+    padding: 35px;
 }
 
 /* Контейнер с блоком */
 .registration {
     width: min(1240px, 100%);
-    height: 740px;
-    padding: 177px 0 0 50px;
+    padding: 65px 0 90px 50px;
 
     border-radius: 30px;
     background-color: var(--bg-gray);
@@ -25,19 +24,14 @@
 }
 
 /* Заголовок "регистрация" */
-.registration__form-title {
-    font-size: 54px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.registration__form .section-title {
+    margin-top: 54px;
+}
 
-    text-transform: lowercase;
-    transition: 0s all;
-
-    margin-bottom: 38px;
+/* Фикс авто ввода */
+input[type=text]:-webkit-autofill, 
+input[type=text]:-webkit-autofill:focus {
+    transition: background-color 60000s 0s, color 60000s 0s;
 }
 
 /* Блок с инпутом */
@@ -47,6 +41,11 @@
     position: relative;
 
     margin-top: 20px;
+}
+
+/* У первого инпута больше отступ сверху */
+.registration__form-input:first-of-type {
+    margin-top: 40px;
 }
 
 /* Инпуты в форме */

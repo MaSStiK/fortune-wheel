@@ -21,13 +21,8 @@ $(".wheel__buttons").on("click tap", "#wheel-spin", () => {
     const gift = randomNumber(0, gifts.length - 1) // Выигранный подарок
     const giftDeg = 360 / gifts.length // Ширина сектора с подарком
     const marginDeg = randomNumber(-((giftDeg - 2) / 2), ((giftDeg - 2) / 2)) // Отступ от краев сектора
-    const numberOfSpins = 10 // Количество вращений перед выпадением приза
-    const rotationDuration = 10 // Длительность вращения (в секундах)
-
-    console.log(gift, gifts[gift]);
-    console.log("marginDeg", marginDeg);
-    console.log(-(giftDeg / 2), (giftDeg / 2));
-
+    const numberOfSpins = 8 // Количество вращений перед выпадением приза
+    const rotationDuration = 6 // Длительность вращения (в секундах)
 
     // $(".wheel__buttons").hide(500, () => $(".wheel__buttons").remove())
     $(".wheel__buttons").remove()

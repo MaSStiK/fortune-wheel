@@ -1,0 +1,78 @@
+/* Секция с подарками */
+.gifts-section {
+    width: 100%;
+    padding: 35px;
+}
+
+/* Контейнер с блоком */
+.gifts {
+    width: min(1240px, 100%);
+    padding: 25px 40px 114px 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 30px;
+    background-color: var(--bg-gray);
+
+    margin: 0 auto;
+}
+
+
+/* Контейнер с подарками */
+.gifts__container {
+    width: min(1090px, 100%);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 65px 35px;
+
+    margin-top: 47px;
+}
+
+/* Блок с подарком */
+.gifts__gift {
+    width: 230px;
+    height: 150px;
+    position: relative;
+    padding: 16px;
+
+    border-radius: 15px; 
+    backdrop-filter: blur(20px);
+    background: rgba(62, 62, 62, 0.2);
+}
+
+/* Обводка подарка */
+.gifts__gift::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    padding: 2px; 
+    border-radius: 15px; 
+    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%); 
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude; 
+}
+
+/* Картинка подарка */
+.gifts__gift-image {
+    position: absolute;
+    top: -5px;
+    right: -26px;
+
+    transform: rotate(13deg);
+}
+
+/* Описание подарка */
+.gifts__gift-text {
+    width: 130px;
+
+    font-weight: 400;
+    font-size: 18px;
+}

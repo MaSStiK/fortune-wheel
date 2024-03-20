@@ -20,19 +20,19 @@
 }
 
 
-/* Scroll */
+/* Вся полоса прокрутки */
 *::-webkit-scrollbar {
     width: 4px;
 }
 
-/* Scroll трек */
+/* Задний фон полосы прокрутки */
 *::-webkit-scrollbar-track {
     border-radius: 4px;
     background-color: transparent;
 }
 
-/* Scroll полоса */
+/* Полоса прокрутки */
 *::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: #7a7a7a;
+    background-color: var(--button-green);
 }

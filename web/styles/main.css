@@ -21,3 +21,25 @@ article {
 section {
     width: 100%;
 }
+
+
+/* Заголовки секций */
+.section-title {
+    width: fit-content;
+    font-weight: 600;
+    font-size: 54px;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
+    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    .section-title {
+        font-weight: 700;
+        font-size: 25px;
+    }
+}
