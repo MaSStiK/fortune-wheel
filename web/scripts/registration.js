@@ -28,5 +28,5 @@ $(".registration__form").on("submit", (event) => {
 
     $("#wheel-spin").removeAttr("disabled")
 
-    $(".confirm-section").show();
+    $(".confirm-section").show()
 })
