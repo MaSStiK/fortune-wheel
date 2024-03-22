@@ -9,6 +9,8 @@ class WheelSection(db.Model):
     promo_code = db.Column(db.String(255))
     probability = db.Column(db.Float)
     max_drops = db.Column(db.Integer, nullable=True)
+    color = db.Column(db.String(255))
+    image_url = db.Column(db.String(255))
     drops = db.Column(db.Integer, default=0)
 
     def __repr__(self):

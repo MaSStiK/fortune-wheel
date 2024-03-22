@@ -30,6 +30,6 @@ python app.py
 
 Чтобы получить базу данных в формате Exel или csv - используйте в конце url: /export_data_csv
 Чтобы войти в Административную Панель - используйте в конце url: /admin
-
+Чтобы получить массив с информацией о всех секций, а именно name, color и image_url используйте в конце url: /wheel_data
 
 Стек: python, sqlite, flask, flask_sqlalchemy, flask_admin, flask_mail, random, datetime, csv, io, time
