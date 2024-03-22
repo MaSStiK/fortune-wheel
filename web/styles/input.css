@@ -1,0 +1,84 @@
+/* Фикс авто ввода */
+input[type=text]:-webkit-autofill, 
+input[type=text]:-webkit-autofill:focus {
+    transition: background-color 60000s 0s, color 60000s 0s;
+}
+
+
+
+/* Инпут с переносом placeholder на верх */
+.custom-input {
+    width: 100%;
+    position: relative;
+}
+
+/* Инпут в блоке */
+.custom-input input {
+    width: 100%;
+    padding: 18px 14px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #666666;
+
+    /* Текст в инпуте */
+    font-weight: 400;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Замена плейсхолдера */
+.custom-input label {
+    position: absolute;
+    padding: 0 4px;
+    top: 20px;
+    left: 12px;
+
+    font-size: 18px;
+    transition: .2s all;
+
+    /* Отключаем взаимодействие с label */
+    pointer-events: none;
+}
+
+/* Отключаем серый фон инпута если в инпуте есть значение или инпут активен */
+.custom-input input:focus,
+.custom-input input:valid {
+    /* Фон инпута в цвет блока */
+    background-color: var(--bg-gray);
+    border: 1px solid #ffffff;
+}
+
+/* Перемещаем плейсхолдер выше если в инпуте есть значение или инпут активен */
+.custom-input input:focus ~ label,
+.custom-input input:valid ~ label {
+    transform: translate(8px, -30px);
+    font-size: 16px;
+
+    background-color: var(--bg-gray);
+}
+
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Инпуты в форме */
+    .custom-input input {
+        padding: 15px 10px;
+        font-size: 16px;
+    }
+
+    /* Замена плейсхолдера */
+    .custom-input label {
+        top: 16px;
+        left: 10px;
+
+        font-size: 16px;
+    }
+
+    /* Перемещаем плейсхолдер выше если в инпуте есть значение или инпут активен */
+    .custom-input input:focus ~ label,
+    .custom-input input:valid ~ label {
+        transform: translate(4px, -24px);
+        font-size: 14px;
+    }
+}

@@ -1,14 +1,20 @@
 /* Переход на мобильную версию */
 @media screen and (max-width: 876px) {
     .wheel-section {
-        padding: 114px 10px 34px 10px;
+        padding: 35px 8px;
+
+        margin-top: 0;
     }
+
+    /* При вращении колеса с низу больше отступ */
+    /* .wheel-section.spin {
+        padding-bottom: 108px;
+    } */
 
     .wheel__buttons {
-        margin-top: 203px;
-    }
+        width: min(490px, 100%);
+        padding: 0 20px;
 
-    .wheel__buttons .button-green {
-        width: min(353px, 100%);
+        margin-top: 40px;
     }
 }

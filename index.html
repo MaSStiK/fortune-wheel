@@ -7,9 +7,9 @@
     <title>Колесо фортуны</title>
 
     <link rel="stylesheet" href="./web/styles/style.css">
-    <link rel="stylesheet" href="./web/styles/main.css">
     <link rel="stylesheet" href="./web/styles/text.css">
     <link rel="stylesheet" href="./web/styles/buttons.css">
+    <link rel="stylesheet" href="./web/styles/input.css">
 
     <link rel="stylesheet" href="./web/styles/home/home.css">
     <link rel="stylesheet" href="./web/styles/home/home-phone.css">
@@ -20,24 +20,29 @@
     <link rel="stylesheet" href="./web/styles/rules/rules.css">
     <link rel="stylesheet" href="./web/styles/rules/rules-phone.css">
 
-    <link rel="stylesheet" href="./web/styles/wheel/wheel.css">
-    <link rel="stylesheet" href="./web/styles/wheel/wheel-phone.css">
-    <link rel="stylesheet" href="./web/styles/wheel/wheel-modal.css">
-    <link rel="stylesheet" href="./web/styles/wheel/wheel-modal-phone.css">
-
     <link rel="stylesheet" href="./web/styles/registration/registration.css">
     <link rel="stylesheet" href="./web/styles/registration/registration-phone.css">
 
-    
+    <link rel="stylesheet" href="./web/styles/confirm/confirm.css">
+    <link rel="stylesheet" href="./web/styles/confirm/confirm-phone.css">
+
+    <link rel="stylesheet" href="./web/styles/wheel/wheel.css">
+    <link rel="stylesheet" href="./web/styles/wheel/wheel-phone.css">
+
+    <link rel="stylesheet" href="./web/styles/win/win.css">
+    <link rel="stylesheet" href="./web/styles/win/win-phone.css">
+
+    <link rel="stylesheet" href="./web/styles/catalog/catalog.css">
+    <link rel="stylesheet" href="./web/styles/catalog/catalog-phone.css">
 </head>
 <body>
     <article>
-        <section class="home-section" id="home">
+        <section class="home-section">
             <div class="home">
                 <p class="home__logo">productstar</p>
                 <h1 class="section-title">Колесо фортуны</h1>
                 <p class="home__text">Что такое колесо фортуны?<br>Это интерактивный способ получить крутые призы от ProductStar. Здесь нет проигравших - каждому достанется подарок!</p>
-                <a class="button-green" href="#registration">Участвую</a>
+                <button class="button-green" id="goto-registration">Участвую</button>
             </div>
         </section>
 
@@ -53,103 +58,152 @@
             <div class="registration">
                 <div class="registration__rules">
                     <h1 class="section-title">Как выиграть приз</h1>
-                    <p class="registration__rules-text">1. Зарегистрируйтесь для участия в розыгрыше<br>2. Нажмите на кнопку «Крутить»<br>3. Получите приятный приз</p>
+                    <ol>
+                        <li>Зарегистрируйтесь для участия в розыгрыше</li>
+                        <li>Нажмите на кнопку «Крутить»</li>
+                        <li>Получите приятный приз</li>
+                    </ol>
                     <p class="registration__rules-text">Обратите внимание, что принять участие в розыгрыше призов можно только один раз</p>
+                    <button class="button-green" id="open-phone-registration">Зарегистрироваться</button>
                 </div>
 
-                <form class="registration__form">
-                    <h1 class="section-title">Регистрация</h1>
-
-                    <div class="registration__form-input">
-                        <input type="text" id="reg-form-name" name="name" maxlength="100" required>
-                        <label for="reg-form-name">Имя</label>
-                    </div>
-                    <div class="registration__form-input">
-                        <input type="text" id="reg-form-phone" name="phone" maxlength="20" required>
-                        <label for="reg-form-phone">Номер телефона</label>
-                    </div>
-
-                    <div class="registration__form-input">
-                        <input type="text" id="reg-form-email" name="email" maxlength="100" required>
-                        <label for="reg-form-email">Email</label>
-                    </div>
-
-                    <label class="registration__form-checkbox" for="reg-form-policy">Нажимая на кнопку «Отправить», я соглашаюсь с <a href="https://productstar.ru/confpolitics?utm_source=admitad&utm_medium=cpa&utm_campaign=58&admitad_uid=4d52e016740a9f112838924a8ababc4a" target="_blank">политикой конфиденциальности</a>
-                        <input type="checkbox" id="reg-form-policy">
-                        <span>
-                            <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M22.7339 1.74664C23.0806 1.31673 23.0418 0.654879 22.6473 0.26836C22.2528 -0.118158 21.652 -0.0829802 21.3053 0.346932L7.92837 16.935L1.62214 9.98389C1.25106 9.57485 0.649404 9.57485 0.278316 9.98389C-0.0927719 10.3929 -0.0927719 11.0561 0.278316 11.4651L7.30155 19.2066C7.52067 19.4482 7.82019 19.5471 8.10516 19.5034C8.32279 19.4726 8.53098 19.359 8.68742 19.165L22.7339 1.74664Z" fill="white" />
-                              </svg>
-                        </span>
-                    </label>
-                
-                    <button class="button-green" id="registration-submit" type="submit">Отправить</button>
-                </form>
+                <div class="registration__form-wrapper">
+                    <form class="registration__form">
+                        <h1 class="section-title">Регистрация</h1>
+                        <div class="custom-input">
+                            <input type="text" id="reg-form-name" name="name" maxlength="100" required>
+                            <label for="reg-form-name">Имя</label>
+                        </div>
+                        <div class="custom-input">
+                            <input type="text" id="reg-form-phone" name="phone" maxlength="20" required>
+                            <label for="reg-form-phone">Номер телефона</label>
+                        </div>
+                        <div class="custom-input">
+                            <input type="text" id="reg-form-email" name="email" maxlength="100" required>
+                            <label for="reg-form-email">Email</label>
+                        </div>
+                        <label class="registration__form-checkbox" for="reg-form-policy">Нажимая на кнопку «Отправить», я соглашаюсь с <a href="https://productstar.ru/confpolitics?utm_source=admitad&utm_medium=cpa&utm_campaign=58&admitad_uid=4d52e016740a9f112838924a8ababc4a" target="_blank">политикой конфиденциальности</a>
+                            <input type="checkbox" id="reg-form-policy">
+                            <span>
+                                <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.7339 1.74664C23.0806 1.31673 23.0418 0.654879 22.6473 0.26836C22.2528 -0.118158 21.652 -0.0829802 21.3053 0.346932L7.92837 16.935L1.62214 9.98389C1.25106 9.57485 0.649404 9.57485 0.278316 9.98389C-0.0927719 10.3929 -0.0927719 11.0561 0.278316 11.4651L7.30155 19.2066C7.52067 19.4482 7.82019 19.5471 8.10516 19.5034C8.32279 19.4726 8.53098 19.359 8.68742 19.165L22.7339 1.74664Z" fill="white" />
+                                  </svg>
+                            </span>
+                        </label>
+                    
+                        <button class="button-green" id="registration-submit" type="submit">Отправить</button>
+                        <button class="button-transparent" id="close-phone-registration">Отмена</button>
+                    </form>
+                </div>
             </div>
+        </section>
+        
+        <section class="confirm-section">
+            <div class="confirm">
+                <h1 class="section-title">Введите код с почты </h1>
+            
+                <div class="custom-input">
+                    <input type="text" id="confirm-code-input" name="code" maxlength="10" required>
+                    <label for="confirm-code-input">Код</label>
+                </div>
+
+                <button class="button-green" id="confirm-code" type="button">Отправить</button>
+            </div>
+            
         </section>
 
         <section class="wheel-section" id="wheel">
-            <h1 class="wheel__title">Крутить колесо фортуны</h1>
-
             <div class="wheel">
-                <canvas id="wheel-canvas" data-responsiveScaleHeight="true">
-                    <p>Извините, Ваш браузер не поддерживается для отображения Колеса Фортуны. Попробуйте открыть страницу в другом браузере.</p>
-                </canvas>
-                <canvas id="wheel-canvas-images" data-responsiveScaleHeight="true">
-                    <p>Извините, Ваш браузер не поддерживается для отображения Колеса Фортуны. Попробуйте открыть страницу в другом браузере.</p>
-                </canvas>
+                <h1 class="section-title">Крутить колесо фортуны</h1>
 
-                <!-- Круг поверх канваса -->
-                <div class="wheel__canvas-border"></div>
+                <div class="wheel__canvas-wrapper">
+                    <!-- Колесо фортуны с картинками -->
+                    <canvas id="wheel-canvas" data-responsiveScaleHeight="true">
+                        <p>Извините, ваш браузер нет поддерживает&lt;canvas&gt; элемент. Попробуйте открыть страницу в другом браузере.</p>
+                    </canvas>
+    
+                    <!-- Круг поверх канваса -->
+                    <div class="wheel__canvas-border"></div>
+    
+                    <!-- Круг в центре -->
+                    <div class="wheel__canvas-center"></div>
+    
+                    <!-- Указатель на приз -->
+                    <svg class="wheel__canvas-pointer" width="75" height="106" viewBox="0 0 75 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_i_223_219)">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M73.9941 37.6663C73.998 37.4447 74 37.2226 74 37C74 16.5655 57.4345 0 37 0C16.5655 0 0 16.5655 0 37C0 39.4527 0.238652 41.8497 0.694 44.1689V46.5589C0.694 46.8514 0.736771 47.1423 0.820953 47.4224L3.87124 57.5716C3.95661 57.8556 4.08362 58.1254 4.24814 58.3722L14 73L34.9817 104.249C36.1776 106.03 38.8023 106.017 39.98 104.224L59.5 74.5L70.2549 58.3676C70.4174 58.1238 70.5434 57.8576 70.6287 57.5774L74.1761 45.9272C74.2623 45.644 74.3062 45.3495 74.3062 45.0534V39C74.3062 38.5209 74.1938 38.068 73.9941 37.6663Z" fill="#808080" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_i_223_219" x="0" y="0" width="78.3062" height="115.576" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="4" dy="10" />
+                                <feGaussianBlur stdDeviation="10" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
+                                <feBlend mode="normal" in2="shape" result="effect1_innerShadow_223_219" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
 
-                <!-- Круг в центре -->
-                <div class="wheel__canvas-center"></div>
-
-                <!-- Указатель на приз -->
-                <svg class="wheel__canvas-pointer" width="75" height="106" viewBox="0 0 75 106" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_i_223_219)">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M73.9941 37.6663C73.998 37.4447 74 37.2226 74 37C74 16.5655 57.4345 0 37 0C16.5655 0 0 16.5655 0 37C0 39.4527 0.238652 41.8497 0.694 44.1689V46.5589C0.694 46.8514 0.736771 47.1423 0.820953 47.4224L3.87124 57.5716C3.95661 57.8556 4.08362 58.1254 4.24814 58.3722L14 73L34.9817 104.249C36.1776 106.03 38.8023 106.017 39.98 104.224L59.5 74.5L70.2549 58.3676C70.4174 58.1238 70.5434 57.8576 70.6287 57.5774L74.1761 45.9272C74.2623 45.644 74.3062 45.3495 74.3062 45.0534V39C74.3062 38.5209 74.1938 38.068 73.9941 37.6663Z" fill="#808080" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_i_223_219" x="0" y="0" width="78.3062" height="115.576" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                            <feOffset dx="4" dy="10" />
-                            <feGaussianBlur stdDeviation="10" />
-                            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
-                            <feBlend mode="normal" in2="shape" result="effect1_innerShadow_223_219" />
-                        </filter>
-                    </defs>
-                </svg>
-
-                <!-- <div class="wheel__modal">
-                    <h2 class="wheel__modal-title">Как использовать колесо?</h2>
-                    <p class="wheel__modal-text">Нажмите на кнопку «Крутить»,<br>и колесо начнет вращаться.<br>В результате вам выпадает один из восьми приятных призов</p>
-                    <button class="button-modal" id="wheel-modal-agree">Понятно!</button>
-                </div> -->
+                <div class="wheel__buttons">
+                    <button class="button-green" id="wheel-spin" disabled>Крутить</button>
+                    <button class="button-green" id="goto-gifts">Призы</button>
+                </div>
             </div>
+        </section>
 
-            <div class="wheel__buttons">
-                <button class="button-green" id="wheel-spin" disabled>Крутить</button>
-                <a class="button-green transparent" href="#rules">Призы</a>
+        <section class="win-section" id="win">
+            <div class="win">
+                <h1 class="section-title">Поздравляем, вы выиграли</h1>
+                <h2 class="win__gift-name">Название приза</h2>
+                <p class="win__text">Промокод отправлен на вашу почту, указанную при регистрации</p>
+                <p class="win__text">Для бронирования промокода (срок действия скидки до 30 апреля), активации подарка или если у вас есть вопросы — свяжитесь с нашим карьерным консультантом</p>
+                <button class="button-green">Получить приз</button>
             </div>
+        </section>
 
-            <p class="wheel-win">вы выиграли</p>
+        <section class="catalog-section" id="catalog">
+            <div class="catalog">
+                <h1 class="section-title">Каталог курсов</h1>
+                <h4 class="catalog__subtitle">Обучайтесь востребованным на рынке навыкам</h4>
+                <div class="catalog__courses">
+                    <div class="catalog__course">
+                        <h2 class="catalog__course-title">Менеджмент</h2>
+                        <p class="catalog__course-text">90+ спикеров<br>из топ-компаний</p>
+                        <a class="catalog__course-link" href="https://productstar.ru/catalog?tfc_charact:5632936[551670368]=Менеджмент&tfc_div=:::" target="_blank"></a>
+                    </div>
+                    <div class="catalog__course">
+                        <h2 class="catalog__course-title">Разработка</h2>
+                        <p class="catalog__course-text">40+ спикеров<br>из топ-компаний</p>
+                        <a class="catalog__course-link" href="https://productstar.ru/catalog?tfc_charact:5632936[551670368]=Программирование&tfc_div=:::" target="_blank"></a>
+                    </div>
+                    <div class="catalog__course">
+                        <h2 class="catalog__course-title">Аналитика</h2>
+                        <p class="catalog__course-text">30+ спикеров<br>из топ-компаний</p>
+                        <a class="catalog__course-link" href="https://productstar.ru/catalog?tfc_charact:5632936[551670368]=Аналитика&tfc_div=:::" target="_blank"></a>
+                    </div>
+                    <div class="catalog__course">
+                        <h2 class="catalog__course-title">Дизайн</h2>
+                        <p class="catalog__course-text">20+ спикеров<br>из топ-компаний</p>
+                        <a class="catalog__course-link" href="https://productstar.ru/catalog?tfc_charact:5632936[551670368]=Дизайн&tfc_div=:::" target="_blank"></a>
+                    </div>
+                </div>
+                <a class="button-green" href="https://productstar.ru/catalog" target="_blank">Перейти а каталог</a>
+            </div>
         </section>
     </article>
-
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <!-- device.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/device.js/0.2.7/device.min.js"></script>
-
+    <script src="./web/scripts/navigation.js"></script>
     <script src="./web/scripts/gifts.js"></script>
+    <script src="./web/scripts/registration.js"></script>
+    <script src="./web/scripts/confirm.js"></script>
     <script src="./web/scripts/wheel.js"></script>
     <script src="./web/scripts/wheel-buttons.js"></script>
-    <script src="./web/scripts/registration.js"></script>
 </body>
 </html>

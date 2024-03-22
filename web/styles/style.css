@@ -3,6 +3,7 @@
     --bg-main: #2c2c2c;
     --bg-gray: #1B1B1B;
 
+    /* Основные уровни */
     --z-under: -1;
     --z-above: 1;
     --z-modal: 999;
@@ -14,7 +15,6 @@
     margin: 0;
 
     box-sizing: border-box;
-    list-style-type: none;
     scroll-behavior: smooth;
     color-scheme: dark;
 }
@@ -34,5 +34,63 @@
 /* Полоса прокрутки */
 *::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: var(--button-green);
+    background-color: #7EE9A9;
+}
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-main);
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    body {
+        background-color: var(--bg-gray);
+    }
+}
+
+article, section {
+    width: 100%;
+}
+
+
+/* Отключение прокрутки у страницы */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Отключение прокрутки у страницы ТОЛЬКО на телефоне (на пк не действует) */
+    body.phone-no-scroll {
+        overflow: hidden;
+    }
+}
+
+
+/* Заголовки с градиентом в секциях */
+.section-title {
+    width: fit-content;
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
+    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    .section-title {
+        font-weight: 700;
+        font-size: 25px;
+    }
 }

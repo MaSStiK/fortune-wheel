@@ -1,6 +1,6 @@
 // Отрисовки колеса
-function drawFortuneWheel(drawImages=false) {
-    const canvas = document.getElementById(drawImages ? "wheel-canvas-images" : "wheel-canvas")
+function drawFortuneWheel() {
+    const canvas = document.getElementById("wheel-canvas")
     
     // Канвас большого размера что бы картинки не мылились
     canvas.setAttribute("width", 1280)
@@ -17,9 +17,6 @@ function drawFortuneWheel(drawImages=false) {
 
         let ctx = canvas.getContext("2d")
         ctx.clearRect(0,0,canvas.width,canvas.height)
-        $("#wheel-canvas-images").css({
-            "transition-duration": "1s",
-        })
 
         for (let i in gifts) {
             // Начальный поворот - минус 90 градусов и минус половина ширины 
@@ -39,30 +36,28 @@ function drawFortuneWheel(drawImages=false) {
             ctx.fill()
             // Отрисовываем двумя способами что бы избавится от линий между секциями
             
-            // Если нужно отрисовать изображения
-            if (drawImages) {
-                ctx.save()
-                ctx.translate(
-                    outsideRadius + Math.cos(angle + arc / 2) * imageRadius, 
-                    outsideRadius + Math.sin(angle + arc / 2) * imageRadius
-                )
-                ctx.rotate(angle + arc / 2 + Math.PI / 2)
+            // Отрисовка изображений
+            ctx.save()
+            ctx.translate(
+                outsideRadius + Math.cos(angle + arc / 2) * imageRadius, 
+                outsideRadius + Math.sin(angle + arc / 2) * imageRadius
+            )
+            ctx.rotate(angle + arc / 2 + Math.PI / 2)
 
-                ctx.imageSmoothingEnabled = true
-                ctx.drawImage(gifts[i].image, -imageSize / 2, 0, imageSize, imageSize) // Отрисовываем изображение
-                ctx.restore()
-            }
+            ctx.imageSmoothingEnabled = true
+            ctx.drawImage(gifts[i].image, -imageSize / 2, 0, imageSize, imageSize) // Отрисовываем изображение
+            ctx.restore()
         } 
     }
 }
 
 
 
-// Загружаем картинки
+// Подгружаем картинки
 let loadImagesCount = 0 // Количество загруженных картинок
 for (let gift in gifts) { 
     let image = new Image()
-    image.src = gifts[gift].imagePath
+    image.src = gifts[gift].image_url
     
     gifts[gift].image = image // Сохраняем загруженную картинку
     
@@ -70,19 +65,27 @@ for (let gift in gifts) {
     image.onload = () => loadImagesCount--
 }
 
+
+let wheelRotationDeg = 0 // Градусы поворота колеса
+let wheelRotationIntervalId // id интервала вращения колеса
+
 // Ждем пока все картинки загрузятся, после чего отрисовываем колесо
 const intervalId = setInterval(() => {  
     if (loadImagesCount === 0) {
         clearInterval(intervalId)
 
-        // drawFortuneWheel()
-
-
-        // Отрисовываем канвас с картинками который плавно появляется
-        drawFortuneWheel(true)
-        $("#wheel-canvas-images").css({
-            "transition-duration": "1s",
+        // Отрисовываем канвас который плавно появляется
+        drawFortuneWheel()
+        $("#wheel-canvas").css({
             "opacity": "1"
         })
+
+        // Медленное вращение колеса
+        wheelRotationIntervalId = setInterval(() => {
+            $("#wheel-canvas").css({
+                "transform": `rotate(-${wheelRotationDeg}deg)`
+            })
+            wheelRotationDeg += 0.1
+        }, 10)
     }
 }, 10)

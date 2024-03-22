@@ -1,13 +1,20 @@
 :root {
-    /* Цвет кнопки */
-    --button-green: #7EE9A9;
-    --button-green-hover: transparent;
+    /* Зеленая кнопка */
+    --button-green-bg: #7EE9A9;
+    --button-green-bg-hover: transparent;
+    --button-green-text: #1d2136;
+    --button-green-text-hover: #ffffff;
+    --button-green-border: #7EE9A9;
 
-    /* Цвет текста */
-    --button-text: #1d2136;
-    --button-text-hover: #ffffff;
+    /* Прозрачная кнопка с зеленым border */
+    --button-transparent-bg: transparent;
+    --button-transparent-bg-hover: #7EE9A9;
+    --button-transparent-text: #7EE9A9;
+    --button-transparent-text-hover: #1d2136;
+    --button-transparent-border: #7EE9A9;
 
-    /* Цвет отключенной кнопки */
+
+    /* Отключенной кнопки */
     --button-gray: #949494;
 }
 
@@ -15,7 +22,7 @@
 button, a {
     font-weight: 600;
     font-size: 16px;
-    color: var(--button-text);
+    color: var(--button-green-text);
     text-decoration: none;
 
     /* Отключаем базовые стили */
@@ -39,21 +46,30 @@ button:disabled {
 
 /* Зеленая кнопка */
 .button-green {
+    width: 260px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     border-radius: 10px;
-    background-color: var(--button-green);
-    border-color: var(--button-green);
+    border-color: var(--button-green-border);
+    background-color: var(--button-green-bg);
 }
 
 /* Прозрачная зеленая кнопка */
-.button-green.transparent {
+.button-transparent {
+    width: 260px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    border-color: var(--button-transparent-border);
+    background-color: var(--button-transparent-bg);
+
     color: var(--button-text-hover);
-    border-color: var(--button-green);
-    background-color: var(--button-green-hover);
 }
 
 /* Переход на мобильную версию */
@@ -67,54 +83,25 @@ button:disabled {
 /* Наведение на пк */
 @media (hover: hover) {
     .button-green:hover {
-        color: var(--button-text-hover);
-        background-color: var(--button-green-hover);
+        background-color: var(--button-green-bg-hover);
+        color: var(--button-green-text-hover);
     }
 
-    .button-green.transparent:hover {
-        color: var(--button-text);
-        background-color: var(--button-green);
+    .button-transparent:hover {
+        background-color: var(--button-transparent-bg-hover);
+        color: var(--button-transparent-text-hover);
     }
 }
 
 /* Клик на телефоне */
 @media (hover: none) {
     .button-green:active {
-        color: var(--button-text-hover);
-        background-color: var(--button-green-hover);
+        background-color: var(--button-green-bg-hover);
+        color: var(--button-green-text-hover);
     }
 
-    .button-green.transparent:active {
-        color: var(--button-text);
-        background-color: var(--button-green);
-    }
-}
-
-
-/* Кнопка в модальном окне */
-.button-modal {
-    height: 46px;
-
-    border-radius: 0 0 15px 15px;
-    border-top: 2px solid rgba(255, 255, 255, 0.6);
-    background-color: transparent;
-
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: 0.01em;
-    color: var(--text-white);
-}
-
-/* Наведение на пк */
-@media (hover: hover) {
-    .button-modal:hover {
-        background-color: #ffffff33;
-    }
-}
-
-/* Клик на телефоне */
-@media (hover: none) {
-    .button-modal:active {
-        background-color: #ffffff33;
+    .button-transparent:active {
+        background-color: var(--button-transparent-bg-hover);
+        color: var(--button-transparent-text-hover);
     }
 }

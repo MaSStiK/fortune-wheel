@@ -8,9 +8,16 @@
     /* Контейнер во всю ширину страницы */
     .gifts {
         width: 100%;
-        padding: 34px 20px 80px 20px;
+        padding: 35px 20px;
 
         border-radius: 0;
+    }
+
+    /* Заголовок секции слева */
+    .gifts .section-title {
+        width: min(345px, 100%);
+
+        text-align: left;
     }
 
     /* Контейнер с подарками */
@@ -21,7 +28,7 @@
         align-items: center;
         gap: 25px;
 
-        margin: 26px 0 0 0;
+        margin: 40px 0 0 0;
     }
 
     /* Блок с подарком */

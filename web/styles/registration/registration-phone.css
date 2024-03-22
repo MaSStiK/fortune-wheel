@@ -1,3 +1,11 @@
+/* Кнопка "Отмена" в регистрации на телефоне */
+#close-phone-registration {
+    display: none;
+    width: 100%;
+
+    margin-top: 16px;
+}
+
 /* Переход на мобильную версию */
 @media screen and (max-width: 876px) {
     .registration-section {
@@ -8,57 +16,59 @@
     .registration {
         width: 100%;
         height: auto;
-        padding: 422px 20px 20px 20px;
+        padding: 35px 20px;
     
         border-radius: 0;
-        background-image: url("../../assets/registration-bg-phone.png");
-        background-position: top;
-    
-        margin: 80px 0 0 0;
+        background-image: none;
+        /* background-image: url("../../assets/registration-bg-phone.png"); */
+        /* background-position: top; */
     }
 
     /* Форма регистрации */
+    .registration__form-wrapper {
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: var(--bg-gray);
+
+        z-index: var(--z-modal);
+    }
+
+    /* Показывать форму регистрации на телефоне */
+    .registration__form-wrapper.open {
+        display: block;
+    }
+
     .registration__form {
+        width: min(470px, 100%);
+        padding: 422px 20px 35px 20px;
+
+        background-image: url("../../assets/registration-bg-phone.png");
+        background-position: top;
+        background-repeat: no-repeat;
+
         margin: 0 auto;
     }
 
+
     /* Заголовок "регистрация" */
-    .registration__form-title {
-        font-size: 25px;
-        font-weight: 700;
-
-        margin-bottom: 30px;
-    }
-
-    /* Блок с инпутом */
-    .registration__form-input {
-        margin-top: 17px;
+    .registration__form .section-title  {
+        margin-top: 0;
     }
 
     /* Инпуты в форме */
-    .registration__form-input input[type=text] {
-        padding: 15px 10px;
-        font-size: 16px;
+    .registration__form .custom-input {
+        margin-top: 17px;
     }
 
-    /* Замена плейсхолдера */
-    .registration__form-input label {
-        top: 15px;
-        left: 10px;
-
-        font-size: 16px;
-        transition: .1s all;
-
-        /* Отключаем взаимодействие с label */
-        pointer-events: none;
-    }
-
-    /* Перемещаем плейсхолдер выше если в инпуте есть значение или инпут активен */
-    .registration__form-input input:focus ~ label,
-    .registration__form-input input:valid ~ label {
-        transform: translateY(-24px);
-
-        font-size: 14px;
+    /* У первого инпута больше отступ сверху */
+    .registration__form .custom-input:first-of-type {
+        margin-top: 50px;
     }
 
 
@@ -89,5 +99,10 @@
         width: 100%;
 
         margin-top: 30px;
+    }
+
+    /* Отображаем кнопку "Отмена" на телефоне, для закрытия регистрации */
+    #close-phone-registration {
+        display: flex;
     }
 }

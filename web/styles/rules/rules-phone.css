@@ -1,15 +1,41 @@
+/* Кнопка "Зарегистрироваться" на телефоне */
+#open-phone-registration {
+    display: none;
+    width: 100%;
+
+    margin-top: 40px;
+}
+
 /* Переход на мобильную версию */
 @media screen and (max-width: 876px) {
     /* Контейнер с правилами */
     .registration__rules {
         width: min(470px, 100%);
 
-        margin: 13px 0 0 0;
+        margin: 0 auto;
     }
 
+    /* Нумерованный список правил */
+    .registration__rules ol {
+        padding-left: 20px;
+        
+        margin-top: 40px;
+    }
+
+    /* Текст правил */
+    .registration__rules ol li {
+        font-size: 16px;
+    }
+
+    /* Текст "Обратите внимание..." */
     .registration__rules-text {
         font-size: 16px;
         
         margin-top: 16px;
+    }
+
+    /* Отображаем кнопку с регистрацией на телефоне */
+    #open-phone-registration {
+        display: flex;
     }
 }

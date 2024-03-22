@@ -1,57 +1,69 @@
-function randomNumber(min, max) { // Случайное число
+// Случайное число
+function randomNumber(min, max) { 
     return Math.round(Math.random() * (max - min)) + min
 }
 
-// Кнопка "Понятно!"
-$("#wheel-modal-agree").on("click tap", () => {
-    // Скрываем модальное окно и разблокируем кнопку
-    $(".wheel__modal").hide()
-    $("#wheel-spin").removeAttr("disabled");
-
-    // Отрисовываем канвас с картинками который плавно появляется
-    drawFortuneWheel(true)
-    $("#wheel-canvas-images").css({
-        "transition-duration": "1s",
-        "opacity": "1"
-    })
-})
-
 // Начать вращение
-$(".wheel__buttons").on("click tap", "#wheel-spin", () => {
+$("#wheel-spin").on("click tap", () => {
     const gift = randomNumber(0, gifts.length - 1) // Выигранный подарок
-    const giftDeg = 360 / gifts.length // Ширина сектора с подарком
-    const marginDeg = randomNumber(-((giftDeg - 2) / 2), ((giftDeg - 2) / 2)) // Отступ от краев сектора
     const numberOfSpins = 8 // Количество вращений перед выпадением приза
     const rotationDuration = 6 // Длительность вращения (в секундах)
 
-    // $(".wheel__buttons").hide(500, () => $(".wheel__buttons").remove())
-    $(".wheel__buttons").remove()
+    // Скрываем кнопки "Крутить" и "Призы"
+    $(".wheel__buttons").css({"opacity": "0"})
+    
+    $(".wheel-section").addClass("spin") // Ставим больше отступ снизу колеса
+    $("body").addClass("no-scroll") // Отключаем прокрутку страницы
+    $("#wheel").get(0).scrollIntoView({behavior: 'smooth'})  // Фиксируем экран на колесе
+
+    // Отключаем вращение
+    clearInterval(wheelRotationIntervalId)
+
+    const giftDeg = 360 / gifts.length // Ширина сектора с подарком
+    const selectedGiftDeg = gift * giftDeg // Градусы поворота на выбранный подарок
+    const numberOfSpinsDeg = numberOfSpins * 360 // Градусы для поворота всего колеса несколько раз
+    const marginDeg = randomNumber(-((giftDeg - 2) / 2), ((giftDeg - 2) / 2)) // Отступ от краев сектора
+    const rotationCompensation = wheelRotationDeg % 360 // Компенсация для отсчета градусов с нуля
+
+    // Изначальный поворот
+    // - Компенсация
+    // + Несколько полных оборотов
+    // + Градусы для поворота на награду
+    // + Дополнительное вращение для неточного наведения
+    const rotateDeg = wheelRotationDeg - rotationCompensation + numberOfSpinsDeg + selectedGiftDeg + marginDeg
 
     // Вращение колеса
-    // Несколько полных оборотов + градусы для поворота на награду + дополнительное вращение для неточного наведения
-    $("#wheel-canvas-images").css({
-        "transition": `${rotationDuration}s all cubic-bezier(0.1, 0, 0.25, 1)`,
-        "transform": `rotate(-${(numberOfSpins * 360) + (giftDeg * gift) + marginDeg}deg)`
+    $("#wheel-canvas").css({
+        "transform": `rotate(-${rotateDeg}deg)`,
+        "transition": `transform ${rotationDuration}s cubic-bezier(0.1, 0, 0.25, 1)`,
     })
 
-    // Через 1 секунду после остановки показываем модальное окно
+    // Через 1 секунду после остановки прокрутка до секции с призом
     setTimeout(() => {
-        // $(".wheel__modal-title").text("Ваш приз")
-        // $(".wheel__modal-text").text(`${gifts[gift].title}\n\n${gifts[gift].data}`)
-        // $(".wheel__modal").show()
+        // Заменяем текст на название приза
+        $(".win__gift-name").text(gifts[gift].name)
 
-        $(".wheel-win").text(`Ваш приз: ${gifts[gift].title}\n\n${gifts[gift].data}`).show()
-
+        // Отображаем секции ниже
+        showGift()
     }, (rotationDuration + 1) * 1000)
 
 })
 
-// Список призов
-// $("#show-gifts").on("click tap", () => {
-//     $(".modal__content").empty().append(`
-//         <h2>Все призы</h2>
-//     `) 
 
-//     // Показываем задний фон модального окна, а потом само окно
-//     $(".modal").show(0, () => $(".modal__container").show(500))
-// })
+// Функция прокрутки и отображения секций с призом и курсов
+function showGift() {
+    // Отображаем секцию с призом
+    $("#win").css({"display": "block",})
+    setTimeout(() => $("#win").css({"opacity": "1"}), 10)
+
+    // Отображаем секцию с курсами
+    $("#catalog").css({"display": "block",})
+    setTimeout(() => $("#catalog").css({"opacity": "1"}), 10)
+
+    $(".wheel__buttons").remove() // Удаляем кнопки под колесом
+    $("#win").get(0).scrollIntoView({behavior: 'smooth'}) // Прокручиваем до секции с призом
+    $("body").removeClass("no-scroll") // Возвращаем прокрутку страницы
+
+}
+
+// showGift()

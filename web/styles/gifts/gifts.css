@@ -20,6 +20,13 @@
 }
 
 
+/* Заголовок секции расположен слева */
+.gifts .section-title {
+    width: min(1090px, 100%);
+
+    text-align: left;
+}
+
 /* Контейнер с подарками */
 .gifts__container {
     width: min(1090px, 100%);
@@ -27,7 +34,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 65px 35px;
+    gap: 65px 50px;
 
     margin-top: 47px;
 }
@@ -40,7 +47,7 @@
     padding: 16px;
 
     border-radius: 15px; 
-    backdrop-filter: blur(20px);
+    /* backdrop-filter: blur(20px); */
     background: rgba(62, 62, 62, 0.2);
 }
 

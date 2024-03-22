@@ -1,7 +1,7 @@
-/* Страница регистрации */
+/* Секция регистрации */
 .registration-section {
     width: 100%;
-    padding: 35px;
+    padding: 35px
 }
 
 /* Контейнер с блоком */
@@ -18,9 +18,14 @@
     margin: 0 auto;
 }
 
+/* Обвертка регистрации (Для мобильной версии) */
+.registration__form-wrapper {
+    width: min(500px, 100%);
+}
+
 /* Форма регистрации */
 .registration__form {
-    width: min(500px, 100%);
+    width: 100%;
 }
 
 /* Заголовок "регистрация" */
@@ -28,72 +33,14 @@
     margin-top: 54px;
 }
 
-/* Фикс авто ввода */
-input[type=text]:-webkit-autofill, 
-input[type=text]:-webkit-autofill:focus {
-    transition: background-color 60000s 0s, color 60000s 0s;
-}
-
-/* Блок с инпутом */
-.registration__form-input {
-    width: 100%;
-    height: auto;
-    position: relative;
-
+/* Инпуты в форме */
+.registration__form .custom-input {
     margin-top: 20px;
 }
 
 /* У первого инпута больше отступ сверху */
-.registration__form-input:first-of-type {
-    margin-top: 40px;
-}
-
-/* Инпуты в форме */
-.registration__form input[type=text] {
-    width: 100%;
-    padding: 18px 14px;
-
-    border: 1px solid transparent;
-    border-radius: 10px;
-    background-color: #666666;
-
-    /* Текст в инпуте */
-    font-weight: 400;
-    font-size: 18px;
-    color: #ffffff;
-}
-
-
-/* Замена плейсхолдера */
-.registration__form-input label {
-    position: absolute;
-    padding: 0 4px;
-    top: 20px;
-    left: 12px;
-
-    font-size: 18px;
-    transition: .1s all;
-
-    /* Отключаем взаимодействие с label */
-    pointer-events: none;
-}
-
-/* Отключаем серый фон инпута если в инпуте есть значение или инпут активен */
-.registration__form-input input:focus,
-.registration__form-input input:valid {
-    /* Фон инпута в цвет блока */
-    background-color: var(--bg-gray);
-    border: 1px solid #ffffff;
-}
-
-/* Перемещаем плейсхолдер выше если в инпуте есть значение или инпут активен */
-.registration__form-input input:focus ~ label,
-.registration__form-input input:valid ~ label {
-    transform: translateY(-30px);
-
-    font-size: 16px;
-
-    background-color: var(--bg-gray);
+.registration__form .custom-input:first-of-type {
+    margin-top: 56px;
 }
 
 
@@ -121,6 +68,9 @@ input[type=text]:-webkit-autofill:focus {
 
 /* Ссылка на политику конфиденциальности */
 .registration__form-checkbox a {
+    width: fit-content;
+    border: none;
+    
     text-decoration: underline;
     font-weight: inherit;
     font-size: inherit;
@@ -180,11 +130,5 @@ input[type=text]:-webkit-autofill:focus {
 
 /* Кнопка "Отправить" */
 .registration__form .button-green {
-    width: 260px;
-
     margin-top: 35px;
-}
-
-@media screen and (max-width: 370px) {
-
 }

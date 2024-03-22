@@ -1,4 +1,4 @@
-/* Главная страница */
+/* Главная секция */
 .home-section {
     width: 100%;
     padding: 35px;
@@ -7,8 +7,7 @@
 /* Контейнер с блоком */
 .home {
     width: min(1240px, 100%);
-    height: 740px;
-    padding: 242px 0 0 40px;
+    padding: 242px 0 110px 40px;
     position: relative;
 
     border-radius: 30px;
@@ -39,6 +38,7 @@
 .home .section-title {
     width: 355px;
 
+    line-height: normal;
     font-size: 62px;
     text-transform: uppercase;
 }
@@ -71,7 +71,5 @@
 
 /* Кнопка "Испытать удачу" */
 .home .button-green {
-    width: 260px;
-
     margin-top: 60px;
 }

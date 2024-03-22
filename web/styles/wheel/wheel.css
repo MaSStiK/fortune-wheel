@@ -1,48 +1,49 @@
-/* Страница с колесом */
+/* Секция с колесом */
 .wheel-section {
     width: 100%;
-    padding: 110px 20px;
+    padding: 35px;
+
+    margin-top: 70px;
 }
 
-/* Контейнер с колесом */
+/* При вращении колеса с низу больше отступ */
+.wheel-section.spin {
+    padding-bottom: 108px;
+}
+
+/* Контейнер с блоком */
 .wheel {
-    width: min(720px, 100%);
-    aspect-ratio : 1 / 1;
-    position: relative;
-
-    margin: 57px auto 0 auto;
-}
-
-/* Заголовок "Крутить колесо фортуны" */
-.wheel__title {
-    width: fit-content;
-
-    font-weight: 600;
-    font-size: 54px;
-    letter-spacing: 0.01em;
-    text-transform: lowercase;
-    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    width: min(1240px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 
     margin: 0 auto;
 }
 
+/* Обвертка канваса с колесом */
+.wheel__canvas-wrapper {
+    width: min(720px, 100%);
+    aspect-ratio : 1 / 1;
+    position: relative;
+
+    margin-top: 40px;
+}
+
 /* Канвас чуть дальше от центра */
-#wheel-canvas,
-#wheel-canvas-images {
+#wheel-canvas {
     width: calc(100% - 2px);
     height: calc(100% - 2px);
 
     position: absolute;
     top: 1px;
     left: 1px;
-}
-
-/* Канвас с картинками невидимый, потом плавно появляется */
-#wheel-canvas-images {
+    
     opacity: 0;
+    transition: opacity 1s;
+
+    pointer-events: none;
 }
 
 /* Круг поверх канваса */
@@ -76,8 +77,8 @@
 
 /* Указатель на приз */
 .wheel__canvas-pointer {
-    width: clamp(39px, 9vw, 74px);
-    height: clamp(54px, 13vw, 105px);
+    width: clamp(29px, 10vw, 74px);
+    height: clamp(44px, 14vw, 105px);
 
     position: absolute;
     top: 0;
@@ -93,20 +94,10 @@
     flex-direction: column;
     gap: 16px;
 
-    margin: 64px auto 0 auto;
+    margin-top: 64px;
 }
 
 .wheel__buttons .button-green {
-    width: 260px;
-}
-
-
-
-/* Текст выигрыша */
-.wheel-win {
-    display: none;
-
-    white-space: pre-wrap;
-    text-align: center;
-    margin-top: 12px;
+    width: 100%;
+    transition: 1s opacity;
 }

@@ -1,0 +1,56 @@
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    .win-section {
+        padding: 0;
+    }
+
+    /* Контейнер во всю ширину страницы */
+    .win {
+        width: 100%;
+        height: auto;
+        padding: 35px 20px 35px 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        border-radius: 0;
+        background-image: url("../../assets/win-bg-phone.png");
+        background-position: bottom 150px left 50%;
+    }
+
+    /* Заголовок "Поздравляем, вы выиграли" */
+    .win .section-title {
+        width: min(470px, 100%);
+    }
+
+    /* Название приза */
+    .win__gift-name {
+        width: min(470px, 100%);
+
+        font-weight: 700;
+        font-size: 20px;
+
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+
+    /* Описание приза */
+    .win__text {
+        width: min(470px, 100%);
+
+        margin-top: 20px;
+    }
+
+    .win__text:last-of-type {
+        margin-top: 10px;
+    }
+
+    /* Кнопка "Получить приз" */
+    .win .button-green {
+        width: min(470px, 100%);
+
+        margin-top: 382px;
+    }
+}

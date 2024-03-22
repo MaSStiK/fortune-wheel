@@ -1,0 +1,57 @@
+/* Секция с выигрышем */
+.win-section {
+    display: none;
+    width: 100%;
+    padding: 35px;
+
+    opacity: 0;
+    transition: 3s opacity;
+}
+
+/* Контейнер с блоком */
+.win {
+    width: min(1240px, 100%);
+    min-height: 740px;
+    padding: 142px 0 80px 83px;
+
+    border-radius: 30px;
+    background-color: var(--bg-gray);
+    background-image: url("../../assets/win-bg.png");
+    background-repeat: no-repeat;
+    background-position: top right;
+
+    margin: 0 auto;
+}
+
+/* Заголовок "Поздравляем, вы выиграли" */
+.win .section-title {
+    width: 450px;
+}
+
+/* Название приза */
+.win__gift-name {
+    width: 450px;
+
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.3;
+
+    margin-top: 14px;
+}
+
+/* Описание приза */
+.win__text {
+    width: 450px;
+
+    margin-top: 52px;
+}
+
+/* У второго текста отступ меньше */
+.win__text:last-of-type {
+    margin-top: 8px;
+}
+
+/* Кнопка "Получить приз" */
+.win .button-green {
+    margin-top: 30px;
+}

@@ -1,0 +1,105 @@
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    .catalog-section {
+        padding: 0;
+    }
+
+    /* Контейнер во всю ширину страницы */
+    .catalog {
+        width: 100%;
+        padding: 35px 10px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        border-radius: 0;
+    }
+
+    /* Заголовок "Каталог курсов" */
+    .catalog .section-title {
+        width: min(470px, 100%);
+        text-align: left;
+
+        margin-left: 10px;
+    }
+
+    /* Заголовок "Обучайтесь востребованным..." */
+    .catalog__subtitle {
+        width: min(470px, 100%);
+
+        font-weight: 700;
+        font-size: 20px;
+
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    /* Каталог курсов */
+    .catalog__courses {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        margin-top: 40px;
+    }
+
+    /* Блок в каталоге курсов */
+    .catalog__course {
+        width: min(470px, 100%);
+        height: 182px;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .catalog__course:nth-of-type(1) {
+        background-image: url("../../assets/catalog/Management-phone.png");
+    }
+
+    .catalog__course:nth-of-type(2) {
+        background-image: url("../../assets/catalog/Development-phone.png");
+    }
+
+    .catalog__course:nth-of-type(3) {
+        background-image: url("../../assets/catalog/Analytics-phone.png");
+    }
+
+    .catalog__course:nth-of-type(4) {
+        background-image: url("../../assets/catalog/Design-phone.png");
+    }
+
+    /* Название курса */
+    .catalog__course-title {
+        font-size: 25px;
+        letter-spacing: 0.01em;
+    }
+
+    /* Текст внутри курса */
+    .catalog__course-text {
+        font-size: 16px;
+
+        margin-top: 70px;
+    }
+
+    /* Ссылка на курсы */
+    .catalog__course-link {
+        bottom: 15px;
+        right: 35px;
+    }
+
+    /* Кнопка "Перейти а каталог" */
+    .catalog .button-green {
+        width: min(470px, 100%);
+
+        margin-top: 40px;
+    }
+}
+
+/* Уменьшение отступа у кнопки внутри курса */
+@media screen and (max-width: 300px) {
+    /* Ссылка на курсы */
+    .catalog__course-link {
+        bottom: 15px;
+        right: 8px;
+    }
+}
