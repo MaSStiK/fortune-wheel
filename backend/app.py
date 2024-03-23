@@ -164,17 +164,28 @@ def export_data_csv():
 # Возвращает массив с информацией о всех секций, а именно name, color и image_url
 @app.route('/wheel_data')
 def get_wheel_data():
-    with app.app_context():
-        sections_data = WheelSection.query.all()
-        wheel_data = []
-        for section in sections_data:
+    wheel_data = []
+    for section_id in range(1, 8):
+        section = WheelSection.query.filter_by(section_id=section_id).first()
+        if section:
             section_info = {
                 "name": section.name,
                 "color": section.color,
                 "image_url": section.image_url
             }
             wheel_data.append(section_info)
-        return jsonify(wheel_data)
+
+    eighth_section = WheelSection.query.filter(WheelSection.section_id >= 8, WheelSection.section_id < 9).first()
+    if eighth_section:
+        section_info = {
+            "name": eighth_section.name,
+            "color": eighth_section.color,
+            "image_url": eighth_section.image_url
+        }
+        wheel_data.append(section_info)
+
+    return jsonify(wheel_data)
+
 
 
 admin = Admin(app, name='Fortune Wheel Admin', template_mode='bootstrap3')
