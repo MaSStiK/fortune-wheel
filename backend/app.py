@@ -1,7 +1,7 @@
 from flask import Flask, request, abort, url_for, redirect, render_template, session, make_response, jsonify
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from wheel_function import spin_wheel, update_statistics
+from wheel_function import spin_wheel, update_statistics, generate_confirmation_code, send_confirmation_code
 from models import WheelSection, PeopleStatistic, db
 import time
 from flask_mail import Mail
@@ -64,73 +64,124 @@ with app.app_context():
         db.session.commit()
 
 
+# Роут для главной страницы
 @app.route('/')
 def index():
-    return render_template('fortune_wheel.html', register=True, spin=False) 
+    return render_template('fortune_wheel.html', register=True, spin=False)
 
 
 # Роут для регистрации
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    with app.app_context():
-        if request.method == 'POST':
-            user_name = request.form.get('user_name')
-            user_email = request.form.get('email')
-            user_phone = request.form.get('phone')
+    if request.method == 'POST':
+        user_name = request.form.get('user_name')
+        user_email = request.form.get('email')
+        user_phone = request.form.get('phone')
 
-            if PeopleStatistic.query.filter_by(email=user_email).first() or PeopleStatistic.query.filter_by(phone=user_phone).first():
-                abort(400, "Пользователь с таким email или phone уже существует")
-
+        existing_user = PeopleStatistic.query.filter_by(email=user_email).first()
+        if existing_user:
+            if existing_user.confirmed:
+                return render_template('fortune_wheel.html', error="Почта уже занята")
+            else:
+                existing_user.user_name = user_name
+                existing_user.phone = user_phone
+                confirmation_code = generate_confirmation_code()
+                existing_user.confirmation_code = confirmation_code
+                db.session.commit()
+                session['user_email'] = user_email
+                send_confirmation_code(user_email, confirmation_code)
+                app.logger.info("Регистрация прошла успешно, перенаправляем на страницу подтверждения email")
+                return redirect(url_for('confirm_email'))
+        else:
+            confirmation_code = generate_confirmation_code()
             new_user = PeopleStatistic(
                 user_name=user_name,
                 email=user_email,
                 phone=user_phone,
-                section_id=None,
-                spin_date=None
+                confirmation_code=confirmation_code
             )
             db.session.add(new_user)
             db.session.commit()
+            session['user_email'] = user_email
+            send_confirmation_code(user_email, confirmation_code)
+            app.logger.info("Регистрация прошла успешно, перенаправляем на страницу подтверждения email")
+            return redirect(url_for('confirm_email'))
 
-            session['user'] = {
-                'email': user_email,
-                'phone': user_phone
-            }
-
-            return redirect(url_for('spin', _external=True))
-
-        return render_template('fortune_wheel.html', register=True, spin=False)
+    app.logger.error("Некорректный метод запроса или данные формы регистрации")
+    return render_template('fortune_wheel.html', register=True, spin=False)
 
 
-# Роут для вращения колеса
+# Роут для подтверждения email
+@app.route('/confirm_email', methods=['GET', 'POST'])
+def confirm_email():
+    if request.method == 'POST':
+        user_email = session.get('user_email')
+        if not user_email:
+            app.logger.error("Адрес электронной почты отсутствует в сессии")
+            abort(400, "Адрес электронной почты отсутствует в сессии")
+
+        user = PeopleStatistic.query.filter_by(email=user_email).first()
+        if not user:
+            app.logger.error("Пользователь с указанным адресом электронной почты не найден")
+            abort(400, "Пользователь с указанным адресом электронной почты не найден")
+
+        confirmation_code = request.form.get('confirmation_code')
+        if confirmation_code != user.confirmation_code:
+            app.logger.error("Неверный код подтверждения")
+            return render_template('fortune_wheel.html', confirm=True, error="Неверный код подтверждения")
+
+        user.confirmed = True
+        db.session.commit()
+
+        session['user_email'] = user_email
+        app.logger.info(f"Данные пользователя: {user}")
+
+        return redirect(url_for('spin'))
+
+    elif request.method == 'GET':
+        return render_template('fortune_wheel.html', confirm=True)
+
+    app.logger.error("Некорректный метод запроса или данные формы подтверждения email")
+    return abort(400)
+
+
+# Роут вращения колеса
 @app.route('/spin', methods=['GET', 'POST'])
 def spin():
-    with app.app_context():
-        if request.method == 'POST':
-            email = session['user']['email']
-            phone = session['user']['phone']
+    if request.method == 'POST':
+        user_email = session.get('user_email')
+        if not user_email:
+            return render_template('fortune_wheel.html', error="Unauthorized access. Please register to spin the wheel.")
+
+        user = PeopleStatistic.query.filter_by(email=user_email).first()
+        if not user or not user.confirmed:
+            return render_template('fortune_wheel.html', error="Unauthorized access. Please register to spin the wheel.")
+
+        email = user.email
+        phone = user.phone
+        print(f"User email: {email}, User phone: {phone}")
+
+        if user.section_id is not None:
+            abort(400, "Пользователь уже прокручивал колесо")
+
+        sections = WheelSection.query.all()
+
+        selected_section = spin_wheel(user, sections)
+        update_statistics(selected_section, email, phone)
+
+        time.sleep(4)
+
+        spin_result = f"{selected_section.name}: {selected_section.gift}"
+
+        return render_template('fortune_wheel.html', spin_result=spin_result, register=False, spin=True, user=user)
+
+    if 'user_email' in session:
+        user_email = session['user_email']
+        user = PeopleStatistic.query.filter_by(email=user_email).first()
+        if user and user.confirmed:
+            return render_template('fortune_wheel.html', register=False, spin=True, user=user)
     
-            print(f"User email: {email}, User phone: {phone}")
-
-            user = PeopleStatistic.query.filter_by(email=email, phone=phone).first()
-
-            print(f"User: {user}")
-            if not user:
-                abort(400, "Пользователь не зарегистрирован")
-            if user.section_id is not None:
-                abort(400, "Пользователь уже прокручивал колесо")
-
-            sections = WheelSection.query.all()
-            
-            selected_section = spin_wheel(user, sections)
-            update_statistics(selected_section, email, phone)
-
-            time.sleep(4)
-
-            spin_result = f"{selected_section.name}: {selected_section.gift}"
-
-            return render_template('fortune_wheel.html', spin_result=spin_result, register=False, spin=True, user=user) # Изменили здесь
-
-        return render_template('fortune_wheel.html', register=False, spin=True)
+    return redirect(url_for('register'))
    
 
 # Роут для экспорта данных пользователей и секций в формате CSV
@@ -159,7 +210,6 @@ def export_data_csv():
     response.mimetype = 'text/csv'
     
     return response
-
 
 # Возвращает массив с информацией о всех секций, а именно name, color и image_url
 @app.route('/wheel_data')

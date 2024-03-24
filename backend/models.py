@@ -23,6 +23,8 @@ class PeopleStatistic(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     phone = db.Column(db.Integer, unique=True, nullable=False)
     promo_code = db.Column(db.String(255), nullable=True)
+    confirmed = db.Column(db.Boolean, default=False)
+    confirmation_code = db.Column(db.String(6))
     section_id = db.Column(db.Integer, db.ForeignKey('wheel_section.section_id'))
     spin_date = db.Column(db.DateTime)
 

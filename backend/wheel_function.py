@@ -1,5 +1,6 @@
 from datetime import datetime
 import random
+import string
 
 # Функция вращения
 def spin_wheel(user, sections):
@@ -52,6 +53,26 @@ def update_statistics(selected_section, user_email, user_phone):
             db.session.commit()
             
             send_promo_code(user_email, selected_section.promo_code)
+
+
+# Генерируем случайный код длиной 6 символов
+def generate_confirmation_code():
+    return ''.join(random.choices(string.digits, k=6))
+
+
+# Функция отправки кода для подверждения почты
+def send_confirmation_code(recipient_email, confirmation_code):
+    from app import mail
+    from flask_mail import Message
+    msg = Message('Подтверждение регистрации', recipients=[recipient_email])
+    msg.body = f'Ваш код подтверждения: {confirmation_code}'
+    
+    try:
+        mail.send(msg)
+        print('Код подтверждения отправлен успешно!')
+    except Exception as e:
+        print('Не удалось отправить код подтверждения:', str(e))
+
 
 
 # Функция отправки промокода на почту зарегистрированного пользователя
