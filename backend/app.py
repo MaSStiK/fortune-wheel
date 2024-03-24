@@ -36,24 +36,24 @@ with app.app_context():
     if not existing_entries:
         sections_data = [
             {"section_id": 1, "name": "Промокод на 1 мини-курс ProductStar на выбор", "gift": "Промокод: PCAMP1MINI", "promo_code": "PCAMP1MINI", "probability": 0.02, "max_drops": 2, "color": "#A2FF76", "image_url": "./web/assets/gifts/1.png"},
-            {"section_id": 2, "name": "Промокод на 2 мини-курса ProductStar на выбор", "gift": "Промокод: PCAMP2MINI", "promo_code": "PCAMP2MINI", "probability": 0.02, "max_drops": 2, "color": "#DDFF73", "image_url": "./web/assets/gifts/4.png"},
-            {"section_id": 3, "name": "Гайд “Как не создать очередной бесполезный продукт” ", "gift": "https://new.productstar.ru/custdev-guide-productcamp2023", "promo_code": "https://new.productstar.ru/custdev-guide-productcamp2023", "probability": 0.05, "color": "#63D4F3", "image_url": "./web/assets/gifts/8.png"},
-            {"section_id": 4, "name": "Скидка на покупку любого курса - 65%", "gift": "Промокод: PCAMP65", "promo_code": "PCAMP65", "probability": 0.6, "color": "#B0E9B1", "image_url": "./web/assets/gifts/6.png"}, 
-            {"section_id": 5, "name": "Скидка на покупку любого курса - 70%", "gift": "Промокод: PCAMP70", "promo_code": "PCAMP70", "probability": 0.2, "color": "#CFFF74", "image_url": "./web/assets/gifts/3.png"},
-            {"section_id": 6, "name": "Скидка на покупку любого курса - 75%", "gift": "Промокод: PCAMP75", "promo_code": "PCAMP75", "probability": 0.01, "max_drops": 1, "color": "#BBFF75", "image_url": "./web/assets/gifts/2.png"},
-            {"section_id": 7, "name": "Бесплатная карьерно-коучинговая консультация от Карьерного Центра ProductStar", "gift": "Промокод: Консультация", "promo_code": "Консультация", "probability": 0.01, "max_drops": 1, "color": "#8ADFD2", "image_url": "./web/assets/gifts/7.png"},
-            {"section_id": 8.1, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-lpa", "promo_code": "PRODUCTCAMP-lpa", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.2, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-rbj", "promo_code": "PRODUCTCAMP-rbj", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.3, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-apx", "promo_code": "PRODUCTCAMP-apx", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.4, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-yjw", "promo_code": "PRODUCTCAMP-yjw", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.5, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-liz", "promo_code": "PRODUCTCAMP-liz", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.6, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-cxk", "promo_code": "PRODUCTCAMP-cxk", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.7, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-mfk", "promo_code": "PRODUCTCAMP-mfk", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.8, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-cbi", "promo_code": "PRODUCTCAMP-cbi", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.9, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-kvd", "promo_code": "PRODUCTCAMP-kvd", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
-            {"section_id": 8.10, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-ihv", "promo_code": "PRODUCTCAMP-ihv", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"}
-
+            {"section_id": 2, "name": "Скидка на покупку любого курса - 75%", "gift": "Промокод: PCAMP75", "promo_code": "PCAMP75", "probability": 0.01, "max_drops": 1, "color": "#BBFF75", "image_url": "./web/assets/gifts/2.png"},
+            {"section_id": 3, "name": "Скидка на покупку любого курса - 70%", "gift": "Промокод: PCAMP70", "promo_code": "PCAMP70", "probability": 0.2, "color": "#CFFF74", "image_url": "./web/assets/gifts/3.png"},
+            {"section_id": 4, "name": "Промокод на 2 мини-курса ProductStar на выбор", "gift": "Промокод: PCAMP2MINI", "promo_code": "PCAMP2MINI", "probability": 0.02, "max_drops": 2, "color": "#DDFF73", "image_url": "./web/assets/gifts/4.png"},
+            {"section_id": 5.1, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-lpa", "promo_code": "PRODUCTCAMP-lpa", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.2, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-rbj", "promo_code": "PRODUCTCAMP-rbj", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.3, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-apx", "promo_code": "PRODUCTCAMP-apx", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.4, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-yjw", "promo_code": "PRODUCTCAMP-yjw", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.5, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-liz", "promo_code": "PRODUCTCAMP-liz", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.6, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-cxk", "promo_code": "PRODUCTCAMP-cxk", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.7, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-mfk", "promo_code": "PRODUCTCAMP-mfk", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.8, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-cbi", "promo_code": "PRODUCTCAMP-cbi", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.9, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-kvd", "promo_code": "PRODUCTCAMP-kvd", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 5.10, "name": "«Подписка РБК Pro» на 1 месяц", "gift": "Промокод: PRODUCTCAMP-ihv", "promo_code": "PRODUCTCAMP-ihv", "probability": 0.1, "max_drops": 1, "color": "#C2EEA3", "image_url": "./web/assets/gifts/5.png"},
+            {"section_id": 6, "name": "Скидка на покупку любого курса - 65%", "gift": "Промокод: PCAMP65", "promo_code": "PCAMP65", "probability": 0.6, "color": "#B0E9B1", "image_url": "./web/assets/gifts/6.png"}, 
+            {"section_id": 7, "name": "Бесплатная карьерно-коучинговая консультация", "gift": "Промокод: Консультация", "promo_code": "Консультация", "probability": 0.01, "max_drops": 1, "color": "#8ADFD2", "image_url": "./web/assets/gifts/7.png"},
+            {"section_id": 8, "name": "Гайд “Как не создать очередной бесполезный продукт” ", "gift": "https://new.productstar.ru/custdev-guide-productcamp2023", "promo_code": "https://new.productstar.ru/custdev-guide-productcamp2023", "probability": 0.05, "color": "#63D4F3", "image_url": "./web/assets/gifts/8.png"}
         ]
+
 
         for section_data in sections_data:
             section = WheelSection.query.get(section_data['section_id'])
@@ -175,12 +175,12 @@ def get_wheel_data():
             }
             wheel_data.append(section_info)
 
-    eighth_section = WheelSection.query.filter(WheelSection.section_id >= 8, WheelSection.section_id < 9).first()
-    if eighth_section:
+    five_section = WheelSection.query.filter(WheelSection.section_id >= 5, WheelSection.section_id < 6).first()
+    if five_section:
         section_info = {
-            "name": eighth_section.name,
-            "color": eighth_section.color,
-            "image_url": eighth_section.image_url
+            "name": five_section.name,
+            "color": five_section.color,
+            "image_url": five_section.image_url
         }
         wheel_data.append(section_info)
 
