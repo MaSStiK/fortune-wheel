@@ -165,7 +165,7 @@ def export_data_csv():
 @app.route('/wheel_data')
 def get_wheel_data():
     wheel_data = []
-    for section_id in range(1, 8):
+    for section_id in range(1, 9):
         section = WheelSection.query.filter_by(section_id=section_id).first()
         if section:
             section_info = {
@@ -174,15 +174,15 @@ def get_wheel_data():
                 "image_url": section.image_url
             }
             wheel_data.append(section_info)
-
-    five_section = WheelSection.query.filter(WheelSection.section_id >= 5, WheelSection.section_id < 6).first()
-    if five_section:
-        section_info = {
-            "name": five_section.name,
-            "color": five_section.color,
-            "image_url": five_section.image_url
-        }
-        wheel_data.append(section_info)
+        
+        elif section == None:
+            section = WheelSection.query.filter(WheelSection.section_id >= section_id, WheelSection.section_id < section_id + 1).first()
+            section_info = {
+                "name": section.name,
+                "color": section.color,
+                "image_url": section.image_url
+            }
+            wheel_data.append(section_info)
 
     return jsonify(wheel_data)
 
