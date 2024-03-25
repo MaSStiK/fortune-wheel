@@ -88,7 +88,7 @@ def register():
             existing_user_email.phone = user_phone
             confirmation_code = generate_confirmation_code()
             existing_user_email.confirmation_code = confirmation_code
-            db.session.commit()
+            db.session.flush()
             session['user_email'] = user_email
             send_confirmation_code(user_email, confirmation_code)
             app.logger.info("Регистрация прошла успешно, отправлен код подтверждения на почту")
