@@ -77,20 +77,24 @@ def register():
     user_email = request.form.get('email')
     user_phone = request.form.get('phone')
 
-    existing_user = PeopleStatistic.query.filter_by(email=user_email).first()
-    if existing_user:
-        if existing_user.confirmed:
+    existing_user_email = PeopleStatistic.query.filter_by(email=user_email).first()
+    existing_user_phone = PeopleStatistic.query.filter_by(phone=user_phone).first()
+
+    if existing_user_email:
+        if existing_user_email.confirmed:
             return jsonify(success=False, error="Почта уже занята")
         else:
-            existing_user.user_name = user_name
-            existing_user.phone = user_phone
+            existing_user_email.user_name = user_name
+            existing_user_email.phone = user_phone
             confirmation_code = generate_confirmation_code()
-            existing_user.confirmation_code = confirmation_code
+            existing_user_email.confirmation_code = confirmation_code
             db.session.commit()
             session['user_email'] = user_email
             send_confirmation_code(user_email, confirmation_code)
             app.logger.info("Регистрация прошла успешно, отправлен код подтверждения на почту")
             return jsonify(success=True)
+    elif existing_user_phone:
+        return jsonify(success=False, error="Номер телефона уже занят")
     else:
         confirmation_code = generate_confirmation_code()
         new_user = PeopleStatistic(
