@@ -221,9 +221,10 @@ def get_wheel_data():
     return jsonify(wheel_data)
 
 
-last_code_sent = {}
+
 
 # Роут для отправки кода 
+last_code_sent = {}
 @app.route('/send_code', methods=['POST'])
 def send_code():
     email = request.form.get('email')
