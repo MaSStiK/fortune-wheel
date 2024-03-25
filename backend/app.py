@@ -7,7 +7,7 @@ import time
 from flask_mail import Mail
 import csv
 import io
-
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 mail = Mail(app)
@@ -220,6 +220,24 @@ def get_wheel_data():
 
     return jsonify(wheel_data)
 
+
+last_code_sent = {}
+
+# Роут для отправки кода 
+@app.route('/send_code', methods=['POST'])
+def send_code():
+    email = request.form.get('email')
+
+    if email in last_code_sent:
+        time_difference = datetime.now() - last_code_sent[email]
+        if time_difference < timedelta(minutes=1):
+            return jsonify(success=False, error="Вы уже запросили код в течение последней минуты")
+
+    confirmation_code = generate_confirmation_code()
+    send_confirmation_code(email, confirmation_code)
+    last_code_sent[email] = datetime.now()
+
+    return jsonify(success=True, message="Новый код подтверждения отправлен на указанный адрес электронной почты")
 
 
 admin = Admin(app, name='Fortune Wheel Admin', template_mode='bootstrap3')
