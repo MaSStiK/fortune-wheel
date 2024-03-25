@@ -1,4 +1,4 @@
-from flask import Flask, request, abort, url_for, redirect, render_template, session, make_response, jsonify
+from flask import Flask, request, render_template, session, make_response, jsonify
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from wheel_function import spin_wheel, update_statistics, generate_confirmation_code, send_confirmation_code
@@ -104,7 +104,7 @@ def register():
             confirmation_code=confirmation_code
         )
         db.session.add(new_user)
-        db.session.commit()
+        db.session.flush()
         session['user_email'] = user_email
         send_confirmation_code(user_email, confirmation_code)
         app.logger.info("Регистрация прошла успешно, отправлен код подтверждения на почту")
@@ -130,7 +130,7 @@ def confirm_email():
         return jsonify(success=False, error="Неверный код подтверждения")
 
     user.confirmed = True
-    db.session.commit()
+    db.session.flush()
 
     session['user_email'] = user_email
     app.logger.info(f"Данные пользователя: {user}")
@@ -195,6 +195,7 @@ def export_data_csv():
     
     return response
 
+
 # Возвращает массив с информацией о всех секций, а именно name, color и image_url
 @app.route('/wheel_data')
 def get_wheel_data():
@@ -219,8 +220,6 @@ def get_wheel_data():
             wheel_data.append(section_info)
 
     return jsonify(wheel_data)
-
-
 
 
 # Роут для отправки кода 
