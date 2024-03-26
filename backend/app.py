@@ -88,7 +88,7 @@ def register():
             existing_user_email.phone = user_phone
             confirmation_code = generate_confirmation_code()
             existing_user_email.confirmation_code = confirmation_code
-            db.session.flush()
+            db.session.commit()
             session['user_email'] = user_email
             send_confirmation_code(user_email, confirmation_code)
             app.logger.info("Регистрация прошла успешно, отправлен код подтверждения на почту")
@@ -104,11 +104,12 @@ def register():
             confirmation_code=confirmation_code
         )
         db.session.add(new_user)
-        db.session.flush()
+        db.session.commit()
         session['user_email'] = user_email
         send_confirmation_code(user_email, confirmation_code)
         app.logger.info("Регистрация прошла успешно, отправлен код подтверждения на почту")
         return jsonify(success=True)
+
 
 
 # Роут для подтверждения email
@@ -130,7 +131,7 @@ def confirm_email():
         return jsonify(success=False, error="Неверный код подтверждения")
 
     user.confirmed = True
-    db.session.flush()
+    db.session.commit()
 
     session['user_email'] = user_email
     app.logger.info(f"Данные пользователя: {user}")
@@ -245,4 +246,4 @@ admin.add_view(ModelView(WheelSection, db.session))
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
