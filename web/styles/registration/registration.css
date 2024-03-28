@@ -7,7 +7,8 @@
 /* Контейнер с блоком */
 .registration {
     width: min(1240px, 100%);
-    padding: 65px 0 90px 50px;
+    height: 930px;
+    padding: 65px 0 0 40px;
 
     border-radius: 30px;
     background-color: var(--bg-gray);
@@ -17,6 +18,8 @@
 
     margin: 0 auto;
 }
+
+
 
 /* Обвертка регистрации (Для мобильной версии) */
 .registration__form-wrapper {
@@ -28,7 +31,7 @@
     width: 100%;
 }
 
-/* Заголовок "регистрация" */
+/* Заголовок "Регистрация" */
 .registration__form .section-title {
     margin-top: 54px;
 }
@@ -43,92 +46,20 @@
     margin-top: 56px;
 }
 
-
-
-/* Чекбокс в форме */
-.registration__form-checkbox {
-    width: 420px; /* Ограничиваем ширину */
-    height: 30px;
-    padding-left: calc(28px + 12px); /* Отступ от чекбокса */
-    display: flex;
-    flex-direction: column;
-    position: relative;
-
-    font-weight: 400;
-    font-size: 12px;
-
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    margin-top: 50px;
+/* Отступ сверху у чекбокса */
+.registration__form .custom-checkbox {
+    margin-top: 30px;
 }
 
-/* Ссылка на политику конфиденциальности */
-.registration__form-checkbox a {
-    width: fit-content;
-    border: none;
-    
-    text-decoration: underline;
-    font-weight: inherit;
-    font-size: inherit;
-    color: var(--text-white);
+/* Текст ошибки в форме */
+.registration__form-error {
+    font-size: 16px;
+    color: rgb(220, 38, 38);
+
+    margin-top: 30px;
 }
-
-/* Прячем стандартный чекбокс */
-.registration__form-checkbox input[type=checkbox] {
-    height: 0;
-    width: 0;
-    position: absolute;
-
-    cursor: pointer;
-    opacity: 0;
-}
-
-/* Кастомный чекбокс */
-.registration__form-checkbox span {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    border: 2px solid #ffffff;
-    transition: .2s all;
-}
-
-/* Наведение на пк */
-@media (hover: hover) {
-    .registration__form-checkbox:hover input[type=checkbox] ~ span {
-        background-color: #5e5e5e;
-    }
-}
-
-/* Клик на телефоне */
-@media (hover: none) {
-    .registration__form-checkbox:active input[type=checkbox] ~ span {
-        background-color: #5e5e5e;
-    }
-}
-
-/* Когда чекбокс не активирован нету галочки */
-.registration__form-checkbox span svg {
-    display: none;
-}
-
-/* Когда чекбокс активирован появляется галочка */
-.registration__form-checkbox input[type=checkbox]:checked ~ span svg {
-    display: block;
-}
-
 
 /* Кнопка "Отправить" */
 .registration__form .button-green {
-    margin-top: 35px;
+    margin-top: 30px;
 }

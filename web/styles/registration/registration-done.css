@@ -1,0 +1,20 @@
+/* Блок отображается после того как человек зарегистрировался и отправил код */
+.registration__done {
+    display: none;
+    width: min(500px, 100%);
+}
+
+/* Заголовок "Введите код с почты" */
+.registration__done .section-title {
+    margin-top: 54px;
+}
+
+.registration__done-text {
+    font-size: 18px;
+
+    margin-top: 40px;
+}
+
+.registration__done .button-green {
+    margin-top: 40px;
+}

@@ -18,7 +18,7 @@
     --button-gray: #949494;
 }
 
-
+/* Стили для кнопок с ссылок */
 button, a {
     font-weight: 600;
     font-size: 16px;
@@ -30,7 +30,16 @@ button, a {
     border: 1px solid transparent;
 
     cursor: pointer;
+    
     transition: .2s all;
+}
+
+/* У кнопки не выделяется текст */
+button {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 

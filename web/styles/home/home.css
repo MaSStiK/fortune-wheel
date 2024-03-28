@@ -7,7 +7,7 @@
 /* Контейнер с блоком */
 .home {
     width: min(1240px, 100%);
-    padding: 242px 0 110px 40px;
+    padding: 242px 0 130px 40px;
     position: relative;
 
     border-radius: 30px;
@@ -39,21 +39,8 @@
     width: 355px;
 
     line-height: normal;
-    font-size: 62px;
+    font-size: 54px;
     text-transform: uppercase;
-}
-
-.home__title {
-    width: 355px;
-
-    font-weight: 600;
-    font-size: 62px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    background: linear-gradient(95deg, #fffd38 0%, #a2ff76 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 
@@ -63,7 +50,6 @@
 
     font-size: 18px;
     line-height: 1.4;
-    letter-spacing: 0.01em;
     color: #fff;
 
     margin-top: 28px;

@@ -7,11 +7,7 @@
 /* Контейнер с блоком */
 .gifts {
     width: min(1240px, 100%);
-    padding: 25px 40px 114px 40px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 60px 40px;
 
     border-radius: 30px;
     background-color: var(--bg-gray);
@@ -20,21 +16,15 @@
 }
 
 
-/* Заголовок секции расположен слева */
-.gifts .section-title {
-    width: min(1090px, 100%);
-
-    text-align: left;
-}
-
 /* Контейнер с подарками */
 .gifts__container {
-    width: min(1090px, 100%);
+    width: 100%;
+    padding-right: 20px;
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 65px 50px;
+    justify-content: space-between;
+    gap: 65px 40px;
 
     margin-top: 47px;
 }
@@ -72,14 +62,11 @@
     position: absolute;
     top: -5px;
     right: -26px;
-
     transform: rotate(13deg);
 }
 
 /* Описание подарка */
 .gifts__gift-text {
     width: 130px;
-
-    font-weight: 400;
     font-size: 18px;
 }

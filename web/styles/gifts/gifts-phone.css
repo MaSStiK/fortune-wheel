@@ -1,5 +1,5 @@
-/* Переход на мобильную версию */
-@media screen and (max-width: 876px) {
+/* Переход на планшетную версию */
+@media screen and (max-width: 1245px) {
     /* Секция с подарками */
     .gifts-section {
         padding: 0;
@@ -8,9 +8,26 @@
     /* Контейнер во всю ширину страницы */
     .gifts {
         width: 100%;
-        padding: 35px 20px;
+        padding: 35px 40px;
 
         border-radius: 0;
+    }
+}
+
+/* Переход на планшетную версию (фикс контейнера с подарками) */
+@media screen and (max-width: 1144px) {
+    /* Добавляем псевдоэлемент который сдвинет последнюю строку влево, тем самым уберет большой отступ между элементами */
+    .gifts__container::after {
+        content: "";
+        width: 230px;
+    }
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Контейнер во всю ширину страницы */
+    .gifts {
+        padding: 35px 20px;
     }
 
     /* Заголовок секции слева */
@@ -22,13 +39,19 @@
 
     /* Контейнер с подарками */
     .gifts__container {
-        width: min(345px, 100%);
+        width: 100%;
+        padding: 0;
 
-        flex-direction: column;
-        align-items: center;
+        /* flex-direction: column; */
+        justify-content: center;
         gap: 25px;
 
         margin: 40px 0 0 0;
+    }
+
+    /* Скрываем псевдоэлемент */
+    .gifts__container::after {
+        display: none;
     }
 
     /* Блок с подарком */
@@ -37,7 +60,7 @@
         height: 130px;
         padding: 30px;
 
-        margin-right: 50px;
+        margin-right: 30px;
     }
 
     /* Картинка подарка */
@@ -51,11 +74,10 @@
 
     /* Описание подарка */
     .gifts__gift-text {
-        width: 200px;
+        width: 190px;
 
         font-size: 16px;
         line-height: 1.4;
-        letter-spacing: 0.01em;
     }
 }
 

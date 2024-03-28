@@ -3,9 +3,35 @@ function randomNumber(min, max) {
     return Math.round(Math.random() * (max - min)) + min
 }
 
-// Начать вращение
+// Кнопка вращения колеса
 $("#wheel-spin").on("click tap", () => {
-    const gift = randomNumber(0, gifts.length - 1) // Выигранный подарок
+    // Функция вращения колеса
+    $.ajax({
+        url: "http://127.0.0.1:5000/spin",
+        method: "POST",
+        data: {
+            email: localStorage.userEmail,
+            confirmation_code: localStorage.userCode
+        },
+
+        success: (data) => {
+            console.log("/spin >>> success")
+            console.log(data);
+
+            // Если ошибка
+            if (!data.success) {
+                return
+            }
+
+            spinFortuneWheel(
+                data.spin_section.toString()[0],
+                data.spin_result
+            )
+        },
+    })
+})
+
+function spinFortuneWheel(giftId, giftName) {
     const numberOfSpins = 8 // Количество вращений перед выпадением приза
     const rotationDuration = 6 // Длительность вращения (в секундах)
 
@@ -16,9 +42,10 @@ $("#wheel-spin").on("click tap", () => {
     $("body").addClass("no-scroll") // Отключаем прокрутку страницы
     $("#wheel").get(0).scrollIntoView({behavior: 'smooth'})  // Фиксируем экран на колесе
 
-    // Отключаем вращение
+    // Отключаем медленное вращение
     clearInterval(wheelRotationIntervalId)
 
+    const gift = parseInt(giftId) - 1 // Номер секции выигранного подарка
     const giftDeg = 360 / gifts.length // Ширина сектора с подарком
     const selectedGiftDeg = gift * giftDeg // Градусы поворота на выбранный подарок
     const numberOfSpinsDeg = numberOfSpins * 360 // Градусы для поворота всего колеса несколько раз
@@ -41,13 +68,12 @@ $("#wheel-spin").on("click tap", () => {
     // Через 1 секунду после остановки прокрутка до секции с призом
     setTimeout(() => {
         // Заменяем текст на название приза
-        $(".win__gift-name").text(gifts[gift].name)
+        $(".win__gift-name").text(giftName)
 
         // Отображаем секции ниже
         showGift()
     }, (rotationDuration + 1) * 1000)
-
-})
+}
 
 
 // Функция прокрутки и отображения секций с призом и курсов
@@ -63,7 +89,6 @@ function showGift() {
     $(".wheel__buttons").remove() // Удаляем кнопки под колесом
     $("#win").get(0).scrollIntoView({behavior: 'smooth'}) // Прокручиваем до секции с призом
     $("body").removeClass("no-scroll") // Возвращаем прокрутку страницы
-
 }
 
-// showGift()
+showGift()

@@ -1,5 +1,6 @@
-/* Переход на мобильную версию */
-@media screen and (max-width: 876px) {
+/* Переход на планшетную версию */
+@media screen and (max-width: 1245px) {
+    /* Секция с каталогом курсов */
     .catalog-section {
         padding: 0;
     }
@@ -7,13 +8,20 @@
     /* Контейнер во всю ширину страницы */
     .catalog {
         width: 100%;
+        padding: 35px 40px;
+        border-radius: 0;
+    }
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Контейнер во всю ширину страницы */
+    .catalog {
         padding: 35px 10px;
 
         display: flex;
         flex-direction: column;
         align-items: center;
-    
-        border-radius: 0;
     }
 
     /* Заголовок "Каталог курсов" */
@@ -71,7 +79,6 @@
     /* Название курса */
     .catalog__course-title {
         font-size: 25px;
-        letter-spacing: 0.01em;
     }
 
     /* Текст внутри курса */

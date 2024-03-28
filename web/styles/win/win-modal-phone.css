@@ -1,0 +1,16 @@
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Контент модального окна */
+    .win-modal {
+        padding: 35px 20px;
+        border-radius: 15px;
+        background-color: var(--bg-gray);
+    }
+
+    /* Текст "Проверьте, все ли данные верны" */
+    .win-modal__text {
+        font-size: 16px;
+
+        margin-top: 20px;
+    }
+}

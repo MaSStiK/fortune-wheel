@@ -1,0 +1,72 @@
+/* Модальное окно "Карьерный консультант" */
+.win-modal__wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    backdrop-filter: blur(20px);
+    background: rgba(62, 62, 62, 0.2);
+    z-index: var(--z-modal);
+}
+
+/* Отобразить модальное окно */
+.win-modal__wrapper.show {
+    display: flex;
+}
+
+/* Контент модального окна */
+.win-modal {
+    width: min(646px, 100%);
+    padding: 50px 35px;
+    border-radius: 15px;
+    background-color: var(--bg-gray);
+}
+
+/* Текст "Проверьте, все ли данные верны" */
+.win-modal__text {
+    font-size: 18px;
+
+    margin-top: 45px;
+}
+
+/* Отступ у инпутов */
+.win-modal .custom-input {
+    margin-top: 20px;
+}
+
+/* У первого инпута отступ больше */
+.win-modal .custom-input:first-of-type {
+    margin-top: 40px;
+}
+
+/* Чекбокс */
+.win-modal .custom-checkbox {
+    margin-top: 30px;
+}
+
+/* Ошибка в форме */
+.win-modal__error {
+    font-size: 16px;
+    color: rgb(220, 38, 38);
+
+    margin-top: 30px;
+}
+
+/* Кнопки в форме */
+.win-modal .button-green {
+    width: 100%;
+    
+    margin-top: 30px;
+}
+
+#win-close-modal {
+    width: 100%;
+    
+    margin-top: 16px;
+}

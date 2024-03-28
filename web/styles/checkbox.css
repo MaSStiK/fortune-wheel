@@ -1,0 +1,76 @@
+
+/* Чекбокс в форме */
+.custom-checkbox {
+    width: fit-content;
+    padding-left: calc(28px + 12px); /* Отступ от чекбокса */
+    position: relative;
+
+    display: flex;
+    flex-direction: column; /* Ссылка на политику конфиденциальности */
+
+    font-weight: 400;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+/* Ссылка на политику конфиденциальности */
+.custom-checkbox a {
+    width: fit-content;
+    border: none;
+    
+    font-weight: inherit;
+    font-size: inherit;
+    text-decoration: underline;
+    color: var(--text-white);
+}
+
+/* Прячем стандартный чекбокс */
+.custom-checkbox input[type=checkbox] {
+    height: 0;
+    width: 0;
+    position: absolute;
+
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* Кастомный чекбокс */
+.custom-checkbox span {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border: 2px solid #ffffff;
+    transition: .2s all;
+}
+
+/* Наведение на пк */
+@media (hover: hover) {
+    .custom-checkbox:hover input[type=checkbox] ~ span {
+        background-color: #5e5e5e;
+    }
+}
+
+/* Клик на телефоне */
+@media (hover: none) {
+    .custom-checkbox:active input[type=checkbox] ~ span {
+        background-color: #5e5e5e;
+    }
+}
+
+/* Когда чекбокс не активирован нету галочки */
+.custom-checkbox span svg {
+    display: none;
+}
+
+/* Когда чекбокс активирован появляется галочка */
+.custom-checkbox input[type=checkbox]:checked ~ span svg {
+    display: block;
+}

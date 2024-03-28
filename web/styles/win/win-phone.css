@@ -1,5 +1,6 @@
-/* Переход на мобильную версию */
-@media screen and (max-width: 876px) {
+/* Переход на планшетную версию */
+@media screen and (max-width: 1245px) {
+    /* Секция с выигрышем */
     .win-section {
         padding: 0;
     }
@@ -8,15 +9,26 @@
     .win {
         width: 100%;
         height: auto;
-        padding: 35px 20px 35px 20px;
+        min-height: 500px;
+        padding: 35px 40px;
+        background-size: 40%;
+        background-position: right;
+    }
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Контейнер во всю ширину страницы */
+    .win {
+        padding: 35px 20px;
 
         display: flex;
         flex-direction: column;
         align-items: center;
     
-        border-radius: 0;
         background-image: url("../../assets/win-bg-phone.png");
         background-position: bottom 150px left 50%;
+        background-size: auto;
     }
 
     /* Заголовок "Поздравляем, вы выиграли" */

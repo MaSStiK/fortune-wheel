@@ -1,0 +1,39 @@
+/* Форма отправки кода */
+.registration__confirm {
+    display: none;
+    width: 100%;
+}
+
+/* Заголовок "Введите код с почты" */
+.registration__confirm .section-title {
+    margin-top: 54px;
+}
+
+/* У инпута отступ сверху */
+.registration__confirm .custom-input {
+    margin-top: 56px;
+}
+
+/* Текст ошибки в форме */
+.registration__confirm-error {
+    font-size: 16px;
+    color: rgb(220, 38, 38);
+
+    margin-top: 12px;
+}
+
+/* Текст "Отправить повторно через..." */
+.registration__confirm-code {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: not-allowed;
+
+    margin-top: 20px;
+}
+
+
+/* Кнопка "Отправить" */
+.registration__confirm .button-green {
+    margin-top: 20px;
+}

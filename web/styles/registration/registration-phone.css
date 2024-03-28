@@ -6,8 +6,10 @@
     margin-top: 16px;
 }
 
-/* Переход на мобильную версию */
-@media screen and (max-width: 876px) {
+
+/* Переход на планшетную версию */
+@media screen and (max-width: 1245px) {
+    /* Секция регистрации */
     .registration-section {
         padding: 0;
     }
@@ -16,12 +18,21 @@
     .registration {
         width: 100%;
         height: auto;
-        padding: 35px 20px;
+        padding: 35px 40px;
     
         border-radius: 0;
+        background-size: 40%;
+        background-position: right;
+    }
+}
+
+/* Переход на мобильную версию */
+@media screen and (max-width: 876px) {
+    /* Контейнер во всю ширину страницы */
+    .registration {
+        padding: 35px 20px;
+    
         background-image: none;
-        /* background-image: url("../../assets/registration-bg-phone.png"); */
-        /* background-position: top; */
     }
 
     /* Форма регистрации */
@@ -39,12 +50,8 @@
         z-index: var(--z-modal);
     }
 
-    /* Показывать форму регистрации на телефоне */
-    .registration__form-wrapper.open {
-        display: block;
-    }
-
-    .registration__form {
+    .registration__form,
+    .registration__confirm {
         width: min(470px, 100%);
         padding: 422px 20px 35px 20px;
 
@@ -56,8 +63,10 @@
     }
 
 
-    /* Заголовок "регистрация" */
-    .registration__form .section-title  {
+    /* Заголовок */
+    .registration__form .section-title,
+    .registration__confirm .section-title,
+    .registration__done .section-title {
         margin-top: 0;
     }
 
@@ -77,7 +86,6 @@
         width: 100%;
         height: auto;
         padding-left: calc(19px + 12px); /* Отступ от чекбокса */
-
         font-size: 12px;
 
         margin-top: 25px;
@@ -95,7 +103,9 @@
     }
 
     /* Кнопка "Отправить" */
-    .registration__form .button-green {
+    .registration__form .button-green,
+    .registration__confirm .button-green,
+    .registration__done .button-green {
         width: 100%;
 
         margin-top: 30px;
@@ -104,5 +114,32 @@
     /* Отображаем кнопку "Отмена" на телефоне, для закрытия регистрации */
     #close-phone-registration {
         display: flex;
+    }
+
+
+    /* Страница с подтверждением */
+    .registration__confirm .custom-input {
+        margin-top: 56px;
+    }
+
+    /* Текст ошибки в форме */
+    .registration__confirm-error,
+    .registration__confirm-error {
+        font-size: 16px;
+        color: rgb(220, 38, 38);
+
+        margin-top: 12px;
+    }
+
+
+    /* Конец регистрации */
+    .registration__done {
+        width: min(470px, 100%);
+
+        margin: 40px auto 0 auto;
+    }
+
+    .registration__done-text {
+        margin-top: 30px;
     }
 }

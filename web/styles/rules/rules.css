@@ -11,20 +11,16 @@
 
 /* Текст правил */
 .registration__rules ol li {
-    font-weight: 400;
     font-size: 18px;
     line-height: 1.4;
-    letter-spacing: 0.01em;
 }
 
 /* Текст "Обратите внимание..." */
 .registration__rules-text {
     width: min(437px, 100%);
 
-    font-weight: 400;
     font-size: 18px;
     line-height: 1.4;
-    letter-spacing: 0.01em;
     text-decoration: underline;
     text-decoration-skip-ink: none;
     
