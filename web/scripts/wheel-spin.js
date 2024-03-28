@@ -90,5 +90,3 @@ function showGift() {
     $("#win").get(0).scrollIntoView({behavior: 'smooth'}) // Прокручиваем до секции с призом
     $("body").removeClass("no-scroll") // Возвращаем прокрутку страницы
 }
-
-showGift()
